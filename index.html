@@ -3,1298 +3,900 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yasir Khan — Mobile Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Yasir Khan, a Mobile Application Developer specializing in Android Native, Flutter, and AI/LLM integrations with 5+ years of experience.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Yasir Khan — Mobile Systems Engineer</title>
+    <meta name="description" content="Yasir Khan — Senior Mobile Systems Engineer. 5+ years shipping production Android & Flutter apps. Specializing in sensor telemetry, AI/LLM integrations, and Clean Architecture.">
+    <meta name="author" content="Yasir Khan">
+    <meta property="og:title" content="Yasir Khan — Mobile Systems Engineer">
+    <meta property="og:description" content="5+ years building production mobile systems. Android Native (Kotlin/Compose) & Flutter specialist.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* ===== CSS CUSTOM PROPERTIES ===== */
+        /* ══════════════════════════════════════════
+           DESIGN SYSTEM — Inspired by Awwwards SOTD
+           ══════════════════════════════════════════ */
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #1a1a2e;
-            --bg-glass: rgba(26, 26, 46, 0.6);
-            --text-primary: #f0f0f5;
-            --text-secondary: #a0a0b8;
-            --text-muted: #6b6b80;
-            --accent-primary: #38b2ac;
-            --accent-secondary: #4fd1c5;
-            --accent-gradient: linear-gradient(135deg, #38b2ac, #4fd1c5, #81e6d9);
-            --accent-glow: rgba(56, 178, 172, 0.15);
-            --border-color: rgba(255, 255, 255, 0.06);
-            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --section-gap: 100px;
-            --radius-lg: 20px;
-            --radius-md: 14px;
-            --radius-sm: 8px;
+            --black: #050505;
+            --card: #0c0c0e;
+            --card-hover: #131316;
+            --gold: #c9ad8c;
+            --gold-rgb: 201, 173, 140;
+            --gold-dim: rgba(201, 173, 140, 0.06);
+            --sage: #5b8c85;
+            --white: #ececf0;
+            --gray: #8b8fa0;
+            --muted: #484c5c;
+            --border: rgba(255, 255, 255, 0.05);
+            --border-h: rgba(201, 173, 140, 0.2);
+            --ff-display: 'Instrument Sans', sans-serif;
+            --ff-body: 'Inter', sans-serif;
+            --ff-mono: 'JetBrains Mono', monospace;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
+        /* ── Reset ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: var(--ff-body);
+            background: var(--black);
+            color: var(--white);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--white); }
+        ::selection { background: rgba(var(--gold-rgb), 0.25); color: var(--white); }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: #1a1a1f; border-radius: 2px; }
+
+        /* ══════════════════════════════════════════
+           FLOATING ORB BACKGROUND
+           ══════════════════════════════════════════ */
+        .orbs {
+            position: fixed; inset: 0; z-index: 0;
+            pointer-events: none; overflow: hidden;
+        }
+        .orb {
+            position: absolute; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.015) 40%, transparent 70%);
+        }
+        .o1 { width: 700px; height: 700px; top: -15%; right: -10%; animation: drift1 20s ease-in-out infinite; }
+        .o2 { width: 500px; height: 500px; bottom: 5%; left: -8%; animation: drift2 25s ease-in-out infinite; }
+        .o3 { width: 400px; height: 400px; top: 35%; right: 20%; animation: drift3 18s ease-in-out infinite; }
+        .o4 { width: 320px; height: 320px; top: 65%; left: 25%; animation: drift4 22s ease-in-out infinite; }
+        .o5 { width: 550px; height: 550px; top: 15%; left: 35%; background: radial-gradient(circle, rgba(var(--gold-rgb),0.025) 0%, transparent 60%); animation: drift5 28s ease-in-out infinite; }
+        .o6 { width: 250px; height: 250px; bottom: 30%; right: 5%; animation: drift6 16s ease-in-out infinite; }
+
+        @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-50px,40px) scale(1.06)} }
+        @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(60px,-50px) scale(1.08)} }
+        @keyframes drift3 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(-35px,55px)} 66%{transform:translate(45px,-25px)} }
+        @keyframes drift4 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-70px,-35px) scale(1.1)} }
+        @keyframes drift5 { 0%,100%{transform:translate(0,0);opacity:.5} 50%{transform:translate(35px,45px);opacity:1} }
+        @keyframes drift6 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,40px)} }
+
+        /* ══════════════════════════════════════════
+           LAYOUT
+           ══════════════════════════════════════════ */
+        .wrap {
+            max-width: 1200px; margin: 0 auto; padding: 0 28px;
+            position: relative; z-index: 1;
         }
 
-        a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        /* ══════════════════════════════════════════
+           NAVIGATION
+           ══════════════════════════════════════════ */
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(5,5,5,0.88); backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
         }
-        a:hover { color: var(--accent-secondary); }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .nav .wrap {
+            display: flex; justify-content: space-between; align-items: center;
+            height: 64px;
         }
-
-        /* ===== NAVIGATION ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+        .nav-brand {
+            font-family: var(--ff-display); font-size: 16px; font-weight: 600;
+            color: var(--white); letter-spacing: -0.3px;
         }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
+        .nav-brand em { font-style: normal; color: var(--gold); }
+        .nav-menu { display: flex; gap: 32px; list-style: none; }
+        .nav-menu a {
+            font-size: 13px; color: var(--gray); font-weight: 500;
+            letter-spacing: 0.3px; position: relative; transition: color 0.25s;
         }
-
-        .nav-logo {
-            font-size: 20px;
-            font-weight: 800;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
+        .nav-menu a::after {
+            content: ''; position: absolute; bottom: -3px; left: 0;
+            width: 0; height: 1px; background: var(--gold);
+            transition: width 0.3s var(--ease);
+        }
+        .nav-menu a:hover { color: var(--white); }
+        .nav-menu a:hover::after { width: 100%; }
+        .nav-toggle {
+            display: none; background: none; border: none;
+            color: var(--white); font-size: 20px; cursor: pointer;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-gradient);
-            border-radius: 1px;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover { color: var(--text-primary); }
-        .nav-links a:hover::after { width: 100%; }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* ===== HERO SECTION ===== */
+        /* ══════════════════════════════════════════
+           HERO SECTION
+           ══════════════════════════════════════════ */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
+            min-height: 92vh; display: flex; align-items: center;
+            padding: 80px 0 60px;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            animation: pulse 8s ease-in-out infinite;
+        .hero .wrap {
+            display: grid; grid-template-columns: 1fr 300px;
+            gap: 60px; align-items: center;
         }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(79, 209, 197, 0.08) 0%, transparent 70%);
-            animation: pulse 10s ease-in-out infinite reverse;
+        .hero-status {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--ff-mono); font-size: 11px;
+            color: var(--gray); margin-bottom: 20px;
+            border: 1px solid var(--border); padding: 5px 14px;
+            border-radius: 100px;
         }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 1; }
+        .hero-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2.5s ease-in-out infinite;
         }
-
-        .hero .container {
-            display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content { animation: fadeInUp 1s ease; }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--accent-glow);
-            border: 1px solid rgba(56, 178, 172, 0.2);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--accent-secondary);
-            margin-bottom: 24px;
-        }
-
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent-primary);
-            border-radius: 50%;
-            animation: blink 2s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.85)} }
 
         .hero h1 {
-            font-size: 56px;
-            font-weight: 900;
-            line-height: 1.05;
-            letter-spacing: -2px;
-            margin-bottom: 20px;
+            font-family: var(--ff-display); font-size: 52px;
+            font-weight: 700; line-height: 1.08; letter-spacing: -2.5px;
+            margin-bottom: 8px;
         }
-
-        .hero h1 span {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 .accent { color: var(--gold); }
+        .hero-subtitle {
+            font-family: var(--ff-display); font-size: 18px;
+            color: var(--gold); font-weight: 500;
+            margin-bottom: 20px; letter-spacing: -0.3px;
         }
-
-        .hero-description {
-            font-size: 17px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            max-width: 500px;
-            margin-bottom: 36px;
+        .hero-text {
+            font-size: 15px; color: var(--gray); line-height: 1.7;
+            max-width: 480px; margin-bottom: 32px;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
+        .hero-cta {
+            display: flex; gap: 12px;
         }
-
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--ff-display); font-size: 13px; font-weight: 600;
+            padding: 12px 24px; border-radius: 8px; cursor: pointer;
+            transition: all 0.3s var(--ease); border: none;
         }
-
-        .btn-primary {
-            background: var(--accent-gradient);
-            color: #0a0a0f;
+        .btn-fill {
+            background: var(--gold); color: var(--black);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(56, 178, 172, 0.3);
+        .btn-fill:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(var(--gold-rgb),0.2); color: var(--black); }
+        .btn-ghost {
+            background: transparent; color: var(--white);
+            border: 1px solid var(--border);
         }
+        .btn-ghost:hover { border-color: var(--gold); background: var(--gold-dim); color: var(--white); }
 
-        .btn-outline {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
+        .hero-photo-col {
+            display: flex; justify-content: center;
         }
-
-        .btn-outline:hover {
-            border-color: var(--accent-primary);
-            background: var(--accent-glow);
+        .hero-photo-frame {
+            position: relative; width: 260px; height: 320px;
+            border-radius: 16px; overflow: hidden;
         }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            animation: fadeInRight 1s ease 0.3s both;
+        .hero-photo-frame::before {
+            content: ''; position: absolute; inset: -2px;
+            background: linear-gradient(135deg, var(--gold), var(--sage));
+            border-radius: 18px; z-index: -1; opacity: 0.5;
         }
-
-        .hero-photo-wrapper {
-            position: relative;
-        }
-
-        .hero-photo-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            background: var(--accent-gradient);
-            border-radius: 24px;
-            z-index: -1;
-            opacity: 0.6;
-        }
-
         .hero-photo {
-            width: 240px;
-            height: 300px;
-            border-radius: 20px;
-            object-fit: cover;
-            object-position: center top;
-            border: 3px solid var(--bg-primary);
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top;
+            border-radius: 16px;
+            border: 3px solid var(--black);
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
+        .hero-metrics {
+            display: flex; gap: 48px; margin-top: 48px;
+            padding-top: 28px; border-top: 1px solid var(--border);
+        }
+        .metric-num {
+            font-family: var(--ff-display); font-size: 28px;
+            font-weight: 700; color: var(--gold); letter-spacing: -1px;
+        }
+        .metric-label {
+            font-size: 10px; color: var(--muted);
+            text-transform: uppercase; letter-spacing: 1.5px; margin-top: 2px;
         }
 
-        .stat-number {
-            font-size: 32px;
-            font-weight: 800;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* ══════════════════════════════════════════
+           SECTION SYSTEM
+           ══════════════════════════════════════════ */
+        .section {
+            padding: 80px 0;
         }
-
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-top: 4px;
-        }
-
-        /* ===== SECTION COMMON ===== */
-        section {
-            padding: var(--section-gap) 0;
-        }
-
         .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent-primary);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 16px;
+            font-family: var(--ff-mono); font-size: 10px;
+            color: var(--gold); text-transform: uppercase;
+            letter-spacing: 2px; margin-bottom: 8px; display: block;
         }
-
-        .section-label::before {
-            content: '';
-            width: 30px;
-            height: 2px;
-            background: var(--accent-gradient);
-            border-radius: 1px;
-        }
-
         .section-title {
-            font-size: 40px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-            line-height: 1.15;
+            font-family: var(--ff-display); font-size: 32px;
+            font-weight: 700; letter-spacing: -1.5px; margin-bottom: 12px;
+        }
+        .section-desc {
+            font-size: 14px; color: var(--gray); max-width: 560px;
+            margin-bottom: 40px;
         }
 
-        .section-subtitle {
-            font-size: 16px;
-            color: var(--text-secondary);
-            max-width: 550px;
-            line-height: 1.7;
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin-top: 50px;
-        }
-
-        .about-text p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        /* ══════════════════════════════════════════
+           BENTO GRID — ABOUT
+           ══════════════════════════════════════════ */
+        .bento {
+            display: grid; grid-template-columns: repeat(12, 1fr);
             gap: 16px;
         }
-
-        .highlight-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            transition: all 0.3s ease;
+        .card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 24px; position: relative;
+            overflow: hidden; transition: all 0.4s var(--ease);
+        }
+        .card:hover {
+            border-color: var(--border-h); background: var(--card-hover);
+            transform: translateY(-3px);
         }
 
-        .highlight-card:hover {
-            border-color: rgba(56, 178, 172, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        /* Architecture Cell */
+        .c-arch { grid-column: span 5; }
+        .arch-stack { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+        .arch-layer {
+            border: 1px solid var(--border); border-radius: 8px;
+            padding: 10px 14px; transition: border-color 0.3s;
         }
+        .arch-layer:hover { border-color: var(--gold); }
+        .arch-layer.highlight { border-color: var(--gold); }
+        .arch-layer h4 { font-size: 12px; font-weight: 600; }
+        .arch-layer p { font-size: 10.5px; color: var(--gray); margin-top: 1px; }
+        .arch-arrow { text-align: center; font-size: 9px; color: var(--muted); }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+        .tag { font-family: var(--ff-mono); font-size: 9px; padding: 2px 8px; border: 1px solid var(--border); border-radius: 4px; color: var(--gray); }
 
-        .highlight-icon {
-            font-size: 28px;
-            margin-bottom: 12px;
-        }
+        /* Terminal Cell */
+        .c-term { grid-column: span 7; background: #060607; min-height: 380px; display: flex; flex-direction: column; }
+        .term-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 12px; }
+        .term-dots { display: flex; gap: 5px; }
+        .td { width: 8px; height: 8px; border-radius: 50%; }
+        .td-r { background: #ff5f57; } .td-y { background: #febc2e; } .td-g { background: #28c840; }
+        .term-label { font-family: var(--ff-mono); font-size: 10px; color: var(--muted); }
+        .term-out { font-family: var(--ff-mono); font-size: 11px; color: var(--gray); flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; line-height: 1.5; }
+        .term-in { display: flex; align-items: center; gap: 6px; margin-top: auto; border-top: 1px solid var(--border); padding-top: 10px; }
+        .term-caret { color: var(--gold); font-family: var(--ff-mono); font-size: 13px; }
+        .term-field { background: transparent; border: none; outline: none; color: var(--white); font-family: var(--ff-mono); font-size: 11px; flex: 1; }
 
-        .highlight-title {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
+        /* Specs Cell */
+        .c-specs { grid-column: span 7; background: #060607; padding: 0; display: flex; flex-direction: column; }
+        .specs-nav { background: #0a0a0c; display: flex; border-bottom: 1px solid var(--border); }
+        .spec-btn { font-family: var(--ff-mono); font-size: 10.5px; padding: 11px 16px; background: transparent; border: none; color: var(--muted); cursor: pointer; border-right: 1px solid var(--border); transition: all 0.2s; }
+        .spec-btn.on { color: var(--gold); background: #060607; }
+        .spec-btn:hover { color: var(--gray); }
+        .spec-body { padding: 22px; overflow-y: auto; height: 260px; }
+        .sp-title { font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 10px; }
+        .sp-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .sp-list li { padding-left: 14px; position: relative; color: var(--gray); font-size: 12px; line-height: 1.5; }
+        .sp-list li::before { content: "›"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
 
-        .highlight-desc {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
+        /* Metric Cells */
+        .c-stat { grid-column: span 4; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 160px; }
+        .ring { position: relative; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; }
+        .ring-val { font-family: var(--ff-display); font-size: 14px; font-weight: 600; color: var(--gold); position: absolute; }
+        .stat-name { font-size: 12px; font-weight: 600; }
+        .stat-sub { font-size: 10px; color: var(--muted); }
 
-        /* ===== SKILLS SECTION ===== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 50px;
-        }
+        /* Skills Cell */
+        .c-skills { grid-column: span 5; }
+        .skills-cols { display: flex; flex-direction: column; gap: 18px; margin-top: 12px; }
+        .sk-group-name { font-size: 11px; font-weight: 600; margin-bottom: 8px; }
+        .sk-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .sk-tag { font-size: 11px; color: var(--gray); border: 1px solid var(--border); padding: 3px 9px; border-radius: 4px; transition: all 0.25s; }
+        .sk-tag:hover { border-color: var(--gold); color: var(--gold); }
 
-        .skill-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 28px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .skill-card:hover::before { transform: scaleX(1); }
-
-        .skill-card:hover {
-            border-color: rgba(56, 178, 172, 0.2);
-            transform: translateY(-4px);
-            box-shadow: var(--card-shadow);
-        }
-
-        .skill-card-title {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .skill-card-title .emoji {
-            font-size: 22px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            font-size: 11.5px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-color);
-            padding: 6px 14px;
-            border-radius: 20px;
-            transition: all 0.2s ease;
-        }
-
-        .skill-tag:hover {
-            border-color: var(--accent-primary);
-            color: var(--accent-secondary);
-            background: var(--accent-glow);
-        }
-
-        /* ===== PROJECTS SECTION ===== */
+        /* ══════════════════════════════════════════
+           PROJECT CASE STUDIES
+           ══════════════════════════════════════════ */
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-top: 50px;
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+        .proj-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 24px;
+            display: flex; flex-direction: column;
+            transition: all 0.4s var(--ease);
+            min-height: 340px;
         }
+        .proj-card:hover { border-color: var(--border-h); background: var(--card-hover); transform: translateY(-4px); }
+        .proj-platform { font-family: var(--ff-mono); font-size: 9px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
+        .proj-name { font-family: var(--ff-display); font-size: 18px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .proj-desc { font-size: 12.5px; color: var(--gray); line-height: 1.6; margin-bottom: 16px; flex: 1; }
 
-        .project-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+        .proj-case {
+            background: rgba(255,255,255,0.01); border-left: 2px solid var(--gold);
+            padding: 12px 14px; border-radius: 0 8px 8px 0; margin-bottom: 14px;
         }
-
-        .project-card:hover::after { transform: scaleX(1); }
-
-        .project-card:hover {
-            border-color: rgba(56, 178, 172, 0.2);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        .proj-case-label { font-family: var(--ff-mono); font-size: 8.5px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+        .proj-case-text { font-size: 11px; color: var(--gray); line-height: 1.5; }
+        .proj-impact {
+            background: rgba(var(--gold-rgb), 0.04); border-left: 2px solid var(--sage);
+            padding: 8px 12px; border-radius: 0 6px 6px 0; margin-bottom: 14px;
         }
+        .proj-impact-label { font-family: var(--ff-mono); font-size: 8.5px; color: var(--sage); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+        .proj-impact-text { font-size: 11px; color: var(--gray); line-height: 1.45; }
 
-        .project-tech-badge {
-            display: inline-block;
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--accent-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 14px;
-            background: var(--accent-glow);
-            padding: 4px 12px;
-            border-radius: 6px;
+        .proj-stack { display: flex; flex-wrap: wrap; gap: 4px; border-top: 1px solid var(--border); padding-top: 10px; }
+        .proj-chip { font-size: 9px; color: var(--muted); background: rgba(255,255,255,0.015); padding: 2px 7px; border-radius: 3px; }
+
+        /* ══════════════════════════════════════════
+           TIMELINE
+           ══════════════════════════════════════════ */
+        .timeline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .time-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 24px;
+            transition: all 0.35s var(--ease);
         }
+        .time-card:hover { border-color: var(--border-h); transform: translateY(-2px); }
+        .time-date { font-family: var(--ff-mono); font-size: 10px; color: var(--gold); margin-bottom: 6px; }
+        .time-role { font-family: var(--ff-display); font-size: 16px; font-weight: 600; letter-spacing: -0.3px; }
+        .time-co { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+        .time-text { font-size: 12px; color: var(--gray); line-height: 1.6; }
 
-        .project-name {
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: -0.3px;
-        }
-
-        .project-desc {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .project-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .project-feature {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            padding: 5px 12px;
-            border-radius: 6px;
-        }
-
-        .project-card.featured {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .project-card.featured .project-visual {
-            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
-            border-radius: var(--radius-md);
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border-color);
-        }
-
-        .project-visual-icon {
-            font-size: 80px;
-            opacity: 0.6;
-        }
-
-        /* ===== EXPERIENCE SECTION ===== */
-        .timeline {
-            margin-top: 50px;
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 14px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent-primary), transparent);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.6s ease both;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -32px;
-            top: 8px;
-            width: 12px;
-            height: 12px;
-            background: var(--accent-primary);
-            border-radius: 50%;
-            border: 3px solid var(--bg-primary);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 6px;
-        }
-
-        .timeline-role {
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .timeline-duration {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--accent-primary);
-            background: var(--accent-glow);
-            padding: 4px 14px;
-            border-radius: 20px;
-            white-space: nowrap;
-        }
-
-        .timeline-company {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-bottom: 12px;
-        }
-
-        .timeline-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .timeline-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 14px;
-        }
-
-        .timeline-tag {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            padding: 4px 12px;
-            border-radius: 6px;
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        .contact-section {
-            text-align: center;
-        }
-
-        .contact-cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 50px;
-        }
-
+        /* ══════════════════════════════════════════
+           CONTACT
+           ══════════════════════════════════════════ */
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .contact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 28px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 18px; text-align: center;
+            transition: all 0.3s; cursor: pointer; display: block;
+            color: inherit;
         }
+        .contact-card:hover { border-color: var(--border-h); background: var(--card-hover); color: inherit; }
+        .contact-icon { font-size: 18px; margin-bottom: 6px; }
+        .contact-label { font-family: var(--ff-mono); font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+        .contact-val { font-size: 12px; font-weight: 600; margin-top: 3px; }
 
-        .contact-card:hover {
-            border-color: rgba(56, 178, 172, 0.3);
-            transform: translateY(-4px);
-            box-shadow: var(--card-shadow);
-        }
+        .c-form { display: flex; flex-direction: column; gap: 10px; }
+        .c-form-row { display: flex; gap: 10px; }
+        .c-field { background: #060607; border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; font-family: var(--ff-body); font-size: 12px; color: var(--white); outline: none; width: 100%; transition: border-color 0.3s; }
+        .c-field:focus { border-color: var(--gold); }
+        .c-submit { background: var(--gold); color: var(--black); font-family: var(--ff-display); font-size: 12px; font-weight: 600; border: none; padding: 11px 28px; border-radius: 8px; cursor: pointer; align-self: flex-start; transition: all 0.3s; }
+        .c-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(var(--gold-rgb),0.15); }
 
-        .contact-card .icon {
-            font-size: 28px;
-            margin-bottom: 14px;
-        }
+        /* ══════════════════════════════════════════
+           FOOTER
+           ══════════════════════════════════════════ */
+        .footer { text-align: center; padding: 32px 0; font-family: var(--ff-mono); font-size: 10px; color: var(--muted); border-top: 1px solid var(--border); position: relative; z-index: 1; }
 
-        .contact-card .label {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .contact-card .value {
-            font-size: 13px;
-            color: var(--text-primary);
-            font-weight: 600;
-            word-break: break-word;
-        }
-
-        .contact-cta {
-            margin-top: 50px;
-        }
-
-        .contact-cta p {
-            color: var(--text-secondary);
-            font-size: 16px;
-            margin-bottom: 24px;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 30px 0;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(40px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
+        /* ══════════════════════════════════════════
+           SCROLL REVEAL
+           ══════════════════════════════════════════ */
         .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s var(--ease);
         }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* ══════════════════════════════════════════
+           RESPONSIVE
+           ══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
+            .hero-photo-col { order: -1; }
+            .hero-photo-frame { width: 200px; height: 240px; }
+            .bento > * { grid-column: span 12 !important; }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeline-grid { grid-template-columns: 1fr; }
+            .contact-layout { grid-template-columns: 1fr; }
         }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
-            .hero .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero h1 { font-size: 40px; }
-            .hero-description { max-width: 100%; }
-            .hero-buttons { justify-content: center; }
-            .hero-stats { justify-content: center; }
-            .hero-image { order: -1; }
-            .hero-photo { width: 240px; height: 300px; }
-            .about-grid { grid-template-columns: 1fr; }
-            .skills-grid { grid-template-columns: 1fr; }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+            .hero-metrics { gap: 24px; flex-wrap: wrap; }
             .projects-grid { grid-template-columns: 1fr; }
-            .project-card.featured { grid-template-columns: 1fr; }
-            .contact-cards { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; }
-            .mobile-toggle { display: block; }
-            .section-title { font-size: 30px; }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 32px; }
-            .hero-stats { flex-direction: column; gap: 20px; align-items: center; }
-            .contact-cards { grid-template-columns: 1fr; }
-            .about-highlights { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .c-form-row { flex-direction: column; }
+            .nav-menu { display: none; }
+            .nav-menu.open { display: flex; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; background: rgba(5,5,5,0.96); padding: 20px 28px; gap: 14px; border-bottom: 1px solid var(--border); }
+            .nav-toggle { display: block; }
+            .section-title { font-size: 26px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="container">
-            <div class="nav-logo">YK.</div>
-            <ul class="nav-links">
+    <!-- ORB BACKGROUND -->
+    <div class="orbs">
+        <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+        <div class="orb o4"></div><div class="orb o5"></div><div class="orb o6"></div>
+    </div>
+
+    <!-- ══════ NAVIGATION ══════ -->
+    <nav class="nav">
+        <div class="wrap">
+            <div class="nav-brand">yasir<em>.</em>khan</div>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('open')">☰</button>
+            <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="mailto:ykhkpk@gmail.com">Contact</a></li>
             </ul>
-            <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- ══════ HERO ══════ -->
     <section class="hero">
-        <div class="container">
+        <div class="wrap">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="dot"></span>
-                    Available for new opportunities
-                </div>
-                <h1>
-                    Hi, I'm <span>Yasir</span><br>
-                    Mobile Developer
-                </h1>
-                <p class="hero-description">
-                    Android & Flutter developer with 5+ years building high-performance apps — from sensor-driven Qibla compasses to AI-powered styling tools and real-time messaging platforms.
+                <div class="hero-status"><span class="hero-dot"></span> Open to opportunities</div>
+                <h1>I build <span class="accent">mobile<br>systems</span> that ship.</h1>
+                <div class="hero-subtitle">Senior Mobile Engineer — Android & Flutter</div>
+                <p class="hero-text">
+                    5+ years engineering production mobile applications with Kotlin, Jetpack Compose, and Flutter. Deep expertise in sensor telemetry, AI/LLM integration, and Clean Architecture at scale.
                 </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work →</a>
-                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                <div class="hero-cta">
+                    <a href="mailto:ykhkpk@gmail.com" class="btn btn-fill">Get in Touch →</a>
+                    <a href="#projects" class="btn btn-ghost">View Work</a>
                 </div>
-                <div class="hero-stats">
-                    <div>
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div>
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Apps Shipped</div>
-                    </div>
-                    <div>
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">Companies</div>
-                    </div>
+                <div class="hero-metrics">
+                    <div><div class="metric-num">5+</div><div class="metric-label">Years</div></div>
+                    <div><div class="metric-num">12+</div><div class="metric-label">Modules Shipped</div></div>
+                    <div><div class="metric-num">3</div><div class="metric-label">Companies</div></div>
+                    <div><div class="metric-num">11</div><div class="metric-label">Projects</div></div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="hero-photo-wrapper">
-                    <img src="yasir_headshot_1784115803321.png" alt="Yasir Khan" class="hero-photo">
+            <div class="hero-photo-col">
+                <div class="hero-photo-frame">
+                    <img src="profile_clean_bg_1784273378341.png" alt="Yasir Khan — Mobile Systems Engineer" class="hero-photo">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about">
-        <div class="container">
-            <div class="section-label">About Me</div>
-            <h2 class="section-title reveal">Building Apps<br>That Matter</h2>
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <p>
-                        I'm a results-driven Mobile Application Developer based in Pakistan, specializing in <strong style="color:var(--text-primary)">Android Native (Kotlin)</strong> and <strong style="color:var(--text-primary)">Flutter (Dart)</strong>. I've spent 5+ years architecting, building, and shipping production-grade mobile applications.
-                    </p>
-                    <p>
-                        My work ranges from complex sensor-based utility apps (real-time GPS compasses, speedometers) to AI/LLM-powered solutions, creative design tools, and real-time messaging platforms. I'm passionate about Clean Architecture, performance optimization, and delivering pixel-perfect user experiences.
-                    </p>
-                    <p>
-                        I strictly follow <strong style="color:var(--text-primary)">SOLID principles</strong>, <strong style="color:var(--text-primary)">MVVM</strong> patterns, and leverage tools like <strong style="color:var(--text-primary)">Hilt DI</strong>, <strong style="color:var(--text-primary)">Room DB</strong>, and <strong style="color:var(--text-primary)">Riverpod</strong> to build scalable, maintainable codebases.
-                    </p>
+    <!-- ══════ ABOUT — BENTO ══════ -->
+    <section class="section" id="about">
+        <div class="wrap">
+            <span class="section-label">01 — Architecture & Skills</span>
+            <h2 class="section-title">How I Build</h2>
+            <p class="section-desc">Strict Clean Architecture with pure domain layers, zero UI coupling, and production-grade dependency injection across every project.</p>
+
+            <div class="bento">
+                <!-- Architecture -->
+                <div class="card c-arch reveal">
+                    <span class="section-label" style="margin-bottom: 6px;">System Design</span>
+                    <div class="arch-stack">
+                        <div class="arch-layer"><h4>Presentation</h4><p>Compose UI / Flutter Widgets → StateFlow / Riverpod</p></div>
+                        <div class="arch-arrow">▼ observes</div>
+                        <div class="arch-layer highlight"><h4 style="color:var(--gold)">Domain (UseCases)</h4><p>Business logic, repository contracts, entity models</p></div>
+                        <div class="arch-arrow">▼ implements</div>
+                        <div class="arch-layer"><h4>Data</h4><p>Room DB / Retrofit / SensorManager / FFmpeg</p></div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="tag">MVVM</span><span class="tag">Hilt</span><span class="tag">Koin</span>
+                        <span class="tag">Ktor</span><span class="tag">Riverpod</span><span class="tag">CI/CD</span>
+                    </div>
                 </div>
-                <div class="about-highlights reveal">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">📱</div>
-                        <div class="highlight-title">Native Android</div>
-                        <div class="highlight-desc">Kotlin, Jetpack Compose, Canvas API, Sensors</div>
+
+                <!-- Terminal -->
+                <div class="card c-term reveal">
+                    <div class="term-bar">
+                        <div class="term-dots"><span class="td td-r"></span><span class="td td-y"></span><span class="td td-g"></span></div>
+                        <span class="term-label">guest@yasir ~ %</span>
                     </div>
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🦋</div>
-                        <div class="highlight-title">Flutter</div>
-                        <div class="highlight-desc">Dart, Riverpod, Cross-platform delivery</div>
+                    <div class="term-out" id="t-out">
+                        <div>$ whoami</div>
+                        <div style="color:var(--gold)">yasir-khan — mobile systems engineer</div>
+                        <div>$ cat focus.txt</div>
+                        <div>→ Android Native · Kotlin · Compose</div>
+                        <div>→ Flutter · Dart · Riverpod</div>
+                        <div>→ Sensor calibration & telemetry</div>
+                        <div>→ AI/LLM prompt engineering</div>
+                        <div style="color:var(--sage);margin-top:4px">Type 'help' for commands.</div>
                     </div>
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🤖</div>
-                        <div class="highlight-title">AI / LLM</div>
-                        <div class="highlight-desc">LLM integration, Image Analysis, Prompt Engineering</div>
+                    <div class="term-in">
+                        <span class="term-caret">❯</span>
+                        <input type="text" class="term-field" id="t-in" placeholder="Type a command..." autocomplete="off">
                     </div>
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🏗️</div>
-                        <div class="highlight-title">Architecture</div>
-                        <div class="highlight-desc">Clean Arch, MVVM, SOLID, Hilt DI</div>
+                </div>
+
+                <!-- Metrics -->
+                <div class="card c-stat reveal">
+                    <div class="ring">
+                        <svg width="64" height="64"><circle cx="32" cy="32" r="28" stroke="var(--border)" stroke-width="2.5" fill="none"/><circle cx="32" cy="32" r="28" stroke="var(--gold)" stroke-width="2.5" fill="none" stroke-dasharray="176" stroke-dashoffset="17" stroke-linecap="round"/></svg>
+                        <span class="ring-val">60fps</span>
+                    </div>
+                    <div><div class="stat-name">Render Target</div><div class="stat-sub">Fluid Compose UI</div></div>
+                </div>
+                <div class="card c-stat reveal">
+                    <div class="ring">
+                        <svg width="64" height="64"><circle cx="32" cy="32" r="28" stroke="var(--border)" stroke-width="2.5" fill="none"/><circle cx="32" cy="32" r="28" stroke="var(--gold)" stroke-width="2.5" fill="none" stroke-dasharray="176" stroke-dashoffset="0" stroke-linecap="round"/></svg>
+                        <span class="ring-val">100%</span>
+                    </div>
+                    <div><div class="stat-name">DI Coverage</div><div class="stat-sub">Hilt / Koin decoupled</div></div>
+                </div>
+                <div class="card c-stat reveal">
+                    <div class="ring">
+                        <svg width="64" height="64"><circle cx="32" cy="32" r="28" stroke="var(--border)" stroke-width="2.5" fill="none"/><circle cx="32" cy="32" r="28" stroke="var(--sage)" stroke-width="2.5" fill="none" stroke-dasharray="176" stroke-dashoffset="52" stroke-linecap="round"/></svg>
+                        <span class="ring-val">70%</span>
+                    </div>
+                    <div><div class="stat-name">Battery Saved</div><div class="stat-sub">Location poll gates</div></div>
+                </div>
+
+                <!-- Specs -->
+                <div class="card c-specs reveal">
+                    <div class="specs-nav">
+                        <button class="spec-btn on" onclick="showSpec(event,'compass')">Sensor Calibration</button>
+                        <button class="spec-btn" onclick="showSpec(event,'polar')">Extreme Latitudes</button>
+                        <button class="spec-btn" onclick="showSpec(event,'ffmpeg')">FFmpeg Pipeline</button>
+                    </div>
+                    <div class="spec-body" id="spec-out">
+                        <div class="sp-title">🧭 Compass Calibration & Gyroscope Alignment</div>
+                        <ul class="sp-list">
+                            <li><strong>Coordinate Remapping:</strong> SensorManager.remapCoordinateSystem realigns rotation matrix for device orientation (portrait/landscape/tabletop).</li>
+                            <li><strong>Azimuth Calculation:</strong> Raw sensor data evaluated against magnetic declination for true-north heading output.</li>
+                            <li><strong>60FPS Gate:</strong> Sensor callbacks throttled to screen refresh rate, preventing UI thread lock.</li>
+                        </ul>
+                        <div class="tag-row" style="border: none; padding: 0; margin-top: 10px;">
+                            <span class="tag">TYPE_ROTATION_VECTOR</span><span class="tag">Low-Pass Filter</span><span class="tag">Azimuth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="card c-skills reveal">
+                    <span class="section-label" style="margin-bottom: 4px;">Tech Stack</span>
+                    <div class="skills-cols">
+                        <div>
+                            <div class="sk-group-name">Mobile Frameworks</div>
+                            <div class="sk-tags">
+                                <span class="sk-tag">Kotlin</span><span class="sk-tag">Jetpack Compose</span>
+                                <span class="sk-tag">Compose Multiplatform</span><span class="sk-tag">Flutter / Dart</span>
+                                <span class="sk-tag">XML Layouts</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="sk-group-name">Architecture & Data</div>
+                            <div class="sk-tags">
+                                <span class="sk-tag">Clean Architecture</span><span class="sk-tag">MVVM</span>
+                                <span class="sk-tag">Room SQLite</span><span class="sk-tag">Retrofit</span>
+                                <span class="sk-tag">Firebase</span><span class="sk-tag">WebSockets</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="sk-group-name">Tools & APIs</div>
+                            <div class="sk-tags">
+                                <span class="sk-tag">SensorManager</span><span class="sk-tag">FFmpeg</span>
+                                <span class="sk-tag">Google Maps SDK</span><span class="sk-tag">CameraX</span>
+                                <span class="sk-tag">ML Kit</span><span class="sk-tag">Git</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-label">Tech Stack</div>
-            <h2 class="section-title reveal">Tools & Technologies</h2>
-            <p class="section-subtitle reveal">Technologies I use daily to build production-grade mobile applications.</p>
-            <div class="skills-grid">
-                <div class="skill-card reveal">
-                    <div class="skill-card-title"><span class="emoji">📱</span> Mobile Development</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Kotlin</span>
-                        <span class="skill-tag">Jetpack Compose</span>
-                        <span class="skill-tag">Compose Multiplatform</span>
-                        <span class="skill-tag">Flutter</span>
-                        <span class="skill-tag">Dart</span>
-                        <span class="skill-tag">Android SDK</span>
-                    </div>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="skill-card-title"><span class="emoji">🏛️</span> Architecture</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Clean Architecture</span>
-                        <span class="skill-tag">MVVM</span>
-                        <span class="skill-tag">SOLID</span>
-                        <span class="skill-tag">DI (Hilt/Koin)</span>
-                        <span class="skill-tag">Ktor & Riverpod</span>
-                        <span class="skill-tag">CI/CD Pipelines</span>
-                    </div>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="skill-card-title"><span class="emoji">🔥</span> Backend & Data</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Firebase</span>
-                        <span class="skill-tag">Room DB</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">Ktor</span>
-                        <span class="skill-tag">Node.js</span>
-                    </div>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="skill-card-title"><span class="emoji">🤖</span> AI & ML</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">LLM Integration</span>
-                        <span class="skill-tag">Image Analysis</span>
-                        <span class="skill-tag">Prompt Engineering</span>
-                    </div>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="skill-card-title"><span class="emoji">🎨</span> UI & Graphics</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Canvas API</span>
-                        <span class="skill-tag">Custom Drawing</span>
-                        <span class="skill-tag">Animations</span>
-                        <span class="skill-tag">Google Maps</span>
-                    </div>
-                </div>
-                <div class="skill-card reveal">
-                    <div class="skill-card-title"><span class="emoji">⚡</span> Real-Time & Sensors</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">WebSocket</span>
-                        <span class="skill-tag">SensorManager</span>
-                        <span class="skill-tag">GPS / Location</span>
-                        <span class="skill-tag">Google Ads</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-label">Portfolio</div>
-            <h2 class="section-title reveal">Featured Projects</h2>
-            <p class="section-subtitle reveal">A selection of apps I've designed, developed, and shipped.</p>
+    <!-- ══════ PROJECTS ══════ -->
+    <section class="section" id="projects">
+        <div class="wrap">
+            <span class="section-label">02 — Case Studies</span>
+            <h2 class="section-title">Production Modules</h2>
+            <p class="section-desc">Each project follows a Goal → Challenge → Solution → Impact framework. These are real products shipped to real users.</p>
 
             <div class="projects-grid">
-                <!-- Featured: Quran Kareem -->
-                <div class="project-card featured reveal">
-                    <div>
-                        <div class="project-tech-badge">Android · Kotlin · Compose</div>
-                        <div class="project-name">Quran Kareem</div>
-                        <div class="project-desc">
-                            A premium, offline-first Islamic companion app built with Clean Architecture and Hilt DI. Features a real-time Qibla compass using device sensors, a worldwide prayer times engine supporting 8 calculation methods with polar support, a 14-line paginated Quran reader with synchronized audio playback and active-ayah highlighting.
-                        </div>
-                        <div class="project-features">
-                            <span class="project-feature">Qibla Compass</span>
-                            <span class="project-feature">Prayer Times</span>
-                            <span class="project-feature">Audio Sync</span>
-                            <span class="project-feature">Polar Support</span>
-                            <span class="project-feature">Clean Arch</span>
-                            <span class="project-feature">Hilt DI</span>
-                        </div>
+                <!-- 1 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Android Native · Clean Architecture</div>
+                    <h3 class="proj-name">Quran Kareem</h3>
+                    <p class="proj-desc">Offline-first Quran companion with real-time Qibla compass, prayer timetables, audio recitation, translation overlays, and Hijri calendar — all computed locally.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Prayer calculations returned null at polar latitudes where twilight never occurs.</div>
                     </div>
-                    <div class="project-visual">
-                        <div class="project-visual-icon">🕌</div>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Clamped GPS latitude to ±65° and applied HighLatitudeRule.MIDDLE_OF_THE_NIGHT fallback. Zero crash reports from polar regions.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">Compose</span><span class="proj-chip">Hilt</span><span class="proj-chip">Room</span><span class="proj-chip">Canvas</span><span class="proj-chip">SensorManager</span></div>
                 </div>
-
-                <!-- Stylo AI -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Flutter · LLM · AI</div>
-                    <div class="project-name">Stylo AI</div>
-                    <div class="project-desc">
-                        AI-powered personal stylist app that recommends daily outfits based on image analysis using Large Language Models, weather conditions, occasion type, and personal style preferences.
+                <!-- 2 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Flutter · AI / LLM</div>
+                    <h3 class="proj-name">Stylo AI</h3>
+                    <p class="proj-desc">Fashion recommendation engine powered by Gemini LLM, integrating real-time weather data and user preferences for context-aware outfit suggestions.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">LLM responses were unstructured free-text, impossible to render in typed UI cards.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">LLM Integration</span>
-                        <span class="project-feature">Image Analysis</span>
-                        <span class="project-feature">Weather API</span>
-                        <span class="project-feature">Riverpod</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Built regex + JSON boundary parser to extract structured Dart models from LLM output. Managed via Riverpod state containers.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">Gemini</span><span class="proj-chip">Riverpod</span><span class="proj-chip">Weather API</span><span class="proj-chip">Dart</span></div>
                 </div>
-
-                <!-- Scoop -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Android · WebSocket</div>
-                    <div class="project-name">Scoop Messenger</div>
-                    <div class="project-desc">
-                        Real-time messaging platform with video and audio calling powered by WebSocket. Features push notifications, media sharing, and a smooth chat experience.
+                <!-- 3 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Android · Media Processing</div>
+                    <h3 class="proj-name">Video Editor Extensions</h3>
+                    <p class="proj-desc">Extended pre-built editor with reverse playback, MP4→MP3 extraction, and dynamic watermark overlay via FFmpeg command chains.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Chaining multiple FFmpeg operations created intermediate files, doubling export time.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">Video Calls</span>
-                        <span class="project-feature">Audio Calls</span>
-                        <span class="project-feature">WebSocket</span>
-                        <span class="project-feature">Push Notifications</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Designed single-pass filter graphs combining reverse + overlay. Reduced export time by 40%.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">FFmpeg</span><span class="proj-chip">Filter Graphs</span><span class="proj-chip">Threads</span></div>
                 </div>
-
-                <!-- AI Prompt App -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Flutter · LLM · Riverpod</div>
-                    <div class="project-name">AI Prompt App</div>
-                    <div class="project-desc">
-                        Intelligent prompt engineering application integrating Large Language Models (LLMs) via Riverpod to dynamically design, optimize, and manage AI prompt patterns.
+                <!-- 4 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Android Native · Input Method</div>
+                    <h3 class="proj-name">Custom IME Keyboard</h3>
+                    <p class="proj-desc">System keyboard built on InputMethodService with dynamic themes, gesture typing, and sub-50ms key response via canvas-cached glyph rendering.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">GC pauses caused 100ms+ input lag during rapid typing sessions.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">LLM API</span>
-                        <span class="project-feature">Prompt Design</span>
-                        <span class="project-feature">Riverpod</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Pre-cached glyph bitmaps at init and used flat array structures. Achieved consistent &lt;50ms response.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">IME</span><span class="proj-chip">Canvas Cache</span><span class="proj-chip">Gestures</span></div>
                 </div>
-
-                <!-- Prompt Generator -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Flutter · Riverpod</div>
-                    <div class="project-name">Prompt Generator</div>
-                    <div class="project-desc">
-                        Template-driven prompt generation utility enabling users to dynamically construct, optimize, categorize, and export highly optimized prompts for various AI tools.
+                <!-- 5 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Android · Maps & Telemetry</div>
+                    <h3 class="proj-name">GPS Speedometer & Tracker</h3>
+                    <p class="proj-desc">Real-time velocity gauge with digital/analog dials, Google Maps polyline rendering, persistent route history, and trip statistics.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Continuous geocoder lookups drained battery and exceeded API rate limits.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">Template Builder</span>
-                        <span class="project-feature">Export</span>
-                        <span class="project-feature">Categories</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Implemented 500m spatial + 10min temporal gates. 70% battery savings during tracking sessions.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">FusedLocation</span><span class="proj-chip">Maps SDK</span><span class="proj-chip">SQLite</span></div>
                 </div>
-
-                <!-- GPS Speedometer -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Android · GPS · Maps</div>
-                    <div class="project-name">GPS Speedometer & Path Tracker</div>
-                    <div class="project-desc">
-                        Speed tracking app with digital and analog meters, real-time path drawing on Google Maps, and SQLite/Room DB history logging with timing, speeds, start/end points, and route visualization.
+                <!-- 6 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Flutter · Creative Tools</div>
+                    <h3 class="proj-name">Quote Designer & Share</h3>
+                    <p class="proj-desc">Typography card creator with custom backgrounds, fonts, colors, and direct social sharing via native intents.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Exported cards appeared blurry on high-density (3x/4x) screens.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">Digital Meter</span>
-                        <span class="project-feature">Analog Meter</span>
-                        <span class="project-feature">Google Maps</span>
-                        <span class="project-feature">Room DB</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Canvas encoder computes layout constraints relative to device pixel ratio. Crisp output on all densities.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">Canvas</span><span class="proj-chip">Share Intent</span><span class="proj-chip">Typography</span></div>
                 </div>
-
-                <!-- Canvas Editor -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Android · Compose · Canvas</div>
-                    <div class="project-name">Canvas Design Editor</div>
-                    <div class="project-desc">
-                        Canva-style graphic design tool with layer editing, drawing, text overlays, filters, and high-resolution export — built entirely with Jetpack Compose Canvas API.
+                <!-- 7 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Flutter · AI / LLM</div>
+                    <h3 class="proj-name">AI Prompt Utility</h3>
+                    <p class="proj-desc">Prompt engineering toolkit with real-time LLM response previews, token counting, templates, and conversation history management.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Long LLM completions froze the UI thread during JSON parsing.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">Layers</span>
-                        <span class="project-feature">Drawing</span>
-                        <span class="project-feature">Text</span>
-                        <span class="project-feature">Export</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Streaming response rendering with isolate-based parsing. Smooth 60fps during completions.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">LLM APIs</span><span class="proj-chip">Isolates</span><span class="proj-chip">Streaming</span></div>
                 </div>
-
-                <!-- QR Scanner -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Android · Camera</div>
-                    <div class="project-name">QR Code Scanner</div>
-                    <div class="project-desc">
-                        Fast and reliable QR code and barcode scanner using the device camera with instant decoding and result handling.
+                <!-- 8 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Flutter · Productivity</div>
+                    <h3 class="proj-name">Prompt Generator</h3>
+                    <p class="proj-desc">Template-driven prompt builder with category libraries, variable substitution, and one-tap export to clipboard or AI chat apps.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Nested {{variable}} placeholders broke when templates contained special characters.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">Camera</span>
-                        <span class="project-feature">QR Decode</span>
-                        <span class="project-feature">Barcode</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Recursive template parser with character escaping. 100% placeholder resolution accuracy.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">Templates</span><span class="proj-chip">Clipboard</span><span class="proj-chip">Categories</span></div>
                 </div>
-
-                <!-- WA Status Saver -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Android · Play Store</div>
-                    <div class="project-name">WhatsApp Status Saver</div>
-                    <div class="project-desc">
-                        Published utility app for batch-saving WhatsApp statuses with efficient local media scanning and a smooth, user-friendly gallery interface.
+                <!-- 9 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Android · Real-time Communications</div>
+                    <h3 class="proj-name">Scoop Messenger</h3>
+                    <p class="proj-desc">WebSocket-powered messaging client with text, video/audio calls, typing indicators, read receipts, and FCM push notifications.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">WebSocket connections dropped silently when switching between activities.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">Media Scan</span>
-                        <span class="project-feature">Batch Save</span>
-                        <span class="project-feature">Google Play</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Persistent foreground service with exponential backoff reconnection. 99.5% uptime during active sessions.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">WebSocket</span><span class="proj-chip">Video/Audio</span><span class="proj-chip">FCM</span><span class="proj-chip">Service</span></div>
                 </div>
-
-                <!-- Custom Keyboard -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Android · Kotlin</div>
-                    <div class="project-name">Custom IME Keyboard</div>
-                    <div class="project-desc">
-                        Custom input keyboard featuring a personalized styling theme engine, tailored layout configurations, custom auto-correct pipelines, and dynamic key popups.
+                <!-- 10 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Android · Camera & ML</div>
+                    <h3 class="proj-name">QR Code Scanner</h3>
+                    <p class="proj-desc">Fast barcode/QR scanner using CameraX + ML Kit. Batch scanning, timestamped history, and automatic URL detection with in-app browser.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Processing every camera frame through ML Kit consumed excessive CPU.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">Input Method</span>
-                        <span class="project-feature">Theme Engine</span>
-                        <span class="project-feature">Layouts</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Frame-skip analyzer (every 3rd frame). 60% CPU reduction while maintaining instant detection.</div>
                     </div>
+                    <div class="proj-stack"><span class="proj-chip">CameraX</span><span class="proj-chip">ML Kit</span><span class="proj-chip">Frame Skip</span></div>
                 </div>
-
-                <!-- Quote Sharing App -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Flutter · Dart</div>
-                    <div class="project-name">Quote Designer & Share</div>
-                    <div class="project-desc">
-                        Quote application letting users search, save, customize card backgrounds/typography, and instantly share social quote images.
+                <!-- 11 -->
+                <div class="proj-card reveal">
+                    <div class="proj-platform">Android · Published on Play Store</div>
+                    <h3 class="proj-name">WhatsApp Status Saver</h3>
+                    <p class="proj-desc">Published utility scanning local storage for WhatsApp status media with gallery grid, one-tap save, and share functionality.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Android 11+ scoped storage broke direct file access to WhatsApp directories.</div>
                     </div>
-                    <div class="project-features">
-                        <span class="project-feature">Typography</span>
-                        <span class="project-feature">Image Share</span>
-                        <span class="project-feature">SQLite</span>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution & Impact</div>
+                        <div class="proj-impact-text">Migrated to SAF document tree permissions with backward compatibility. Works across Android 8–14.</div>
                     </div>
-                </div>
-
-                <!-- Video Editor Extensions -->
-                <div class="project-card reveal">
-                    <div class="project-tech-badge">Android · FFmpeg · Media</div>
-                    <div class="project-name">Video Editor Pro Extensions</div>
-                    <div class="project-desc">
-                        Engineered custom media processing features for a video editor app, implementing high-performance video reverse, MP4 to MP3 extraction, and watermark overlay layers.
-                    </div>
-                    <div class="project-features">
-                        <span class="project-feature">FFmpeg</span>
-                        <span class="project-feature">Video Reverse</span>
-                        <span class="project-feature">Watermark</span>
-                        <span class="project-feature">Audio Extract</span>
-                    </div>
+                    <div class="proj-stack"><span class="proj-chip">SAF</span><span class="proj-chip">MediaStore</span><span class="proj-chip">Play Store</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-label">Career</div>
-            <h2 class="section-title reveal">Work Experience</h2>
-            <p class="section-subtitle reveal">My professional journey across 3 companies and 5+ years of mobile development.</p>
+    <!-- ══════ EXPERIENCE ══════ -->
+    <section class="section" id="experience">
+        <div class="wrap">
+            <span class="section-label">03 — Timeline</span>
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-desc">Progressive growth from junior developer to leading architecture decisions across production mobile teams.</p>
 
-            <div class="timeline">
-                <div class="timeline-item reveal">
-                    <div class="timeline-header">
-                        <div class="timeline-role">Mobile Application Developer</div>
-                        <div class="timeline-duration">May 2022 — Present</div>
-                    </div>
-                    <div class="timeline-company">Ainsoftech — Lahore, Pakistan</div>
-                    <div class="timeline-desc">
-                        Architecting and shipping production-grade Android & Flutter applications end-to-end. Leading development of complex apps including Quran Kareem (sensor-based compass, prayer engine, paginated reader), AI-powered Flutter apps (Stylo AI, Prompt tools), a real-time messaging platform, GPS speedometer, and creative design tools.
-                    </div>
-                    <div class="timeline-tags">
-                        <span class="timeline-tag">Kotlin</span>
-                        <span class="timeline-tag">Compose</span>
-                        <span class="timeline-tag">Flutter</span>
-                        <span class="timeline-tag">Clean Architecture</span>
-                        <span class="timeline-tag">LLM</span>
-                        <span class="timeline-tag">Hilt</span>
-                    </div>
+            <div class="timeline-grid">
+                <div class="time-card reveal">
+                    <div class="time-date">May 2022 — Present</div>
+                    <div class="time-role">Mobile Application Developer</div>
+                    <div class="time-co">Ainsoftech — Lahore, Pakistan</div>
+                    <p class="time-text">Lead architecture of native Android and Flutter apps. Built Quran Kareem with sensor calibration, Stylo AI with LLM pipelines, and media processing modules. Managed full lifecycle from design to Play Store deployment.</p>
                 </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-header">
-                        <div class="timeline-role">Mobile Developer</div>
-                        <div class="timeline-duration">Jan 2022 — May 2022</div>
-                    </div>
-                    <div class="timeline-company">CodingStorms Technology</div>
-                    <div class="timeline-desc">
-                        Delivered client-facing mobile applications on both Android Native (Kotlin) and Flutter (Dart) for diverse business domains. Integrated third-party APIs, payment gateways, and Firebase services into production client projects.
-                    </div>
-                    <div class="timeline-tags">
-                        <span class="timeline-tag">Kotlin</span>
-                        <span class="timeline-tag">Flutter</span>
-                        <span class="timeline-tag">Firebase</span>
-                        <span class="timeline-tag">REST APIs</span>
-                    </div>
+                <div class="time-card reveal">
+                    <div class="time-date">Jan 2022 — May 2022</div>
+                    <div class="time-role">Mobile Developer</div>
+                    <div class="time-co">CodingStorms Technology</div>
+                    <p class="time-text">Delivered cross-platform client products using Flutter and native Android. Collaborated with design teams for pixel-perfect UI implementations and REST API integrations.</p>
                 </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-header">
-                        <div class="timeline-role">Junior Mobile Developer</div>
-                        <div class="timeline-duration">2020 — 2021</div>
-                    </div>
-                    <div class="timeline-company">Solution of Technologies — Islamabad, Pakistan</div>
-                    <div class="timeline-desc">
-                        Developed and maintained Android native applications following industry-standard patterns. Integrated RESTful APIs, Firebase Authentication, Firestore, and Cloud Storage. Collaborated in Agile sprints to deliver projects on schedule.
-                    </div>
-                    <div class="timeline-tags">
-                        <span class="timeline-tag">Android</span>
-                        <span class="timeline-tag">Firebase</span>
-                        <span class="timeline-tag">REST APIs</span>
-                        <span class="timeline-tag">Agile</span>
-                    </div>
+                <div class="time-card reveal">
+                    <div class="time-date">2020 — 2021</div>
+                    <div class="time-role">Junior Mobile Developer</div>
+                    <div class="time-co">Solution of Technologies — Islamabad</div>
+                    <p class="time-text">Built foundational Android apps with XML layouts, integrated Firestore databases, implemented auth flows, and learned production deployment workflows.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="section-label" style="justify-content: center;">Get In Touch</div>
-            <h2 class="section-title reveal">Let's Work Together</h2>
-            <p class="section-subtitle reveal" style="margin: 0 auto 10px;">
-                I'm currently open to new opportunities. Whether you have a project in mind or just want to connect — let's talk.
-            </p>
+    <!-- ══════ CONTACT ══════ -->
+    <section class="section" id="contact">
+        <div class="wrap">
+            <span class="section-label">04 — Connect</span>
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="section-desc">Open to remote roles, freelance projects, and technical collaborations. Reach out — I reply within 24 hours.</p>
 
-            <div class="contact-cards">
-                <div class="contact-card reveal">
-                    <div class="icon">📍</div>
-                    <div class="label">Location</div>
-                    <div class="value">Mardan KP, Pakistan</div>
+            <div class="contact-layout">
+                <div>
+                    <div class="contact-grid">
+                        <a href="mailto:ykhkpk@gmail.com" class="contact-card">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-val">ykhkpk@gmail.com</div>
+                        </a>
+                        <a href="https://pk.linkedin.com/in/yasir-khan-986152193" target="_blank" class="contact-card">
+                            <div class="contact-icon">🔗</div>
+                            <div class="contact-label">LinkedIn</div>
+                            <div class="contact-val">Yasir Khan</div>
+                        </a>
+                        <a href="tel:+923150012413" class="contact-card">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-val">+92 315 0012413</div>
+                        </a>
+                        <a href="mailto:ykhkpk@gmail.com" class="contact-card">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-label">Location</div>
+                            <div class="contact-val">Mardan KP, Pakistan</div>
+                        </a>
+                    </div>
                 </div>
-                <div class="contact-card reveal">
-                    <div class="icon">✉️</div>
-                    <div class="label">Email</div>
-                    <div class="value"><a href="mailto:ykhkpk@gmail.com">ykhkpk@gmail.com</a></div>
+                <div>
+                    <form class="c-form" id="c-form">
+                        <div class="c-form-row">
+                            <input type="text" class="c-field" placeholder="Your Name" id="fn" required>
+                            <input type="email" class="c-field" placeholder="Your Email" id="fe" required>
+                        </div>
+                        <input type="text" class="c-field" placeholder="Subject" id="fs" required>
+                        <textarea class="c-field" style="height:90px;resize:none;" placeholder="Your message..." id="fm" required></textarea>
+                        <button type="submit" class="c-submit">Send via Gmail →</button>
+                    </form>
                 </div>
-                <div class="contact-card reveal">
-                    <div class="icon">📱</div>
-                    <div class="label">Phone</div>
-                    <div class="value"><a href="tel:+923150012413">+92 315 0012413</a></div>
-                </div>
-                <div class="contact-card reveal">
-                    <div class="icon">🔗</div>
-                    <div class="label">LinkedIn</div>
-                    <div class="value"><a href="https://pk.linkedin.com/in/yasir-khan-986152193" target="_blank">Yasir Khan</a></div>
-                </div>
-            </div>
-
-            <div class="contact-cta reveal">
-                <p>Ready to start a project?</p>
-                <a href="mailto:ykhkpk@gmail.com" class="btn btn-primary">Send Me an Email →</a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>© 2026 Yasir Khan. Built with passion.</p>
-        </div>
+    <footer class="footer">
+        <div class="wrap">© 2026 Yasir Khan. Designed & engineered with precision.</div>
     </footer>
 
-    <!-- SCROLL REVEAL SCRIPT -->
+    <!-- ══════ SCRIPTS ══════ -->
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Smooth nav background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(10, 10, 15, 0.95)';
-            } else {
-                nav.style.background = 'rgba(10, 10, 15, 0.8)';
-            }
+        /* ── Terminal ── */
+        const tIn = document.getElementById('t-in');
+        const tOut = document.getElementById('t-out');
+        const cmds = {
+            help: `Commands:<br>• <span style="color:var(--gold)">skills</span> — Tech competencies<br>• <span style="color:var(--gold)">projects</span> — Shipped modules<br>• <span style="color:var(--gold)">contact</span> — Reach me<br>• <span style="color:var(--gold)">experience</span> — Work history<br>• <span style="color:var(--gold)">clear</span> — Clear console`,
+            skills: `Stack:<br>→ Kotlin · Compose · Compose Multiplatform<br>→ Dart · Flutter · Riverpod<br>→ Clean Architecture · Hilt · Koin · Ktor<br>→ SensorManager · FFmpeg · Maps SDK`,
+            projects: `Modules (11):<br>→ Quran Kareem — Compass + Prayer<br>→ Stylo AI — LLM Fashion<br>→ Video Editor — FFmpeg Pipeline<br>→ Custom IME Keyboard<br>→ GPS Speedometer<br>→ Quote Designer<br>→ AI Prompt Utility<br>→ Prompt Generator<br>→ Scoop Messenger<br>→ QR Scanner<br>→ WhatsApp Status Saver`,
+            contact: `→ Email: <a href="mailto:ykhkpk@gmail.com" style="color:var(--gold)">ykhkpk@gmail.com</a><br>→ Phone: +92 315 0012413<br>→ LinkedIn: <a href="https://pk.linkedin.com/in/yasir-khan-986152193" target="_blank" style="color:var(--gold)">linkedin.com/in/yasir-khan</a>`,
+            experience: `→ 2022–Present: Ainsoftech (Mobile Dev Lead)<br>→ Jan–May 2022: CodingStorms (Mobile Dev)<br>→ 2020–2021: Solution of Technologies (Junior)`
+        };
+        tIn.addEventListener('keydown', e => {
+            if (e.key !== 'Enter') return;
+            const v = tIn.value.trim().toLowerCase();
+            const row = document.createElement('div');
+            row.innerHTML = `<span style="color:var(--gold)">❯</span> ${v}`;
+            tOut.appendChild(row);
+            if (v === 'clear') tOut.innerHTML = '';
+            else if (cmds[v]) { const r = document.createElement('div'); r.style.color='var(--gray)'; r.innerHTML=cmds[v]; tOut.appendChild(r); }
+            else if (v) { const r = document.createElement('div'); r.style.color='#ef4444'; r.textContent=`Not found: "${v}". Type "help".`; tOut.appendChild(r); }
+            tIn.value = '';
+            tOut.scrollTop = tOut.scrollHeight;
         });
-    </script>
 
+        /* ── Specs Tabs ── */
+        const specData = {
+            compass: `<div class="sp-title">🧭 Compass Calibration & Gyroscope Alignment</div><ul class="sp-list"><li><strong>Coordinate Remapping:</strong> remapCoordinateSystem realigns rotation matrix per device orientation.</li><li><strong>Azimuth:</strong> Raw sensor data + magnetic declination → true-north heading.</li><li><strong>60FPS Gate:</strong> Callbacks throttled to screen refresh rate.</li></ul><div class="tag-row" style="border:none;padding:0;margin-top:10px"><span class="tag">ROTATION_VECTOR</span><span class="tag">Low-Pass</span><span class="tag">Azimuth</span></div>`,
+            polar: `<div class="sp-title">❄️ Extreme Latitude Constraints</div><ul class="sp-list"><li><strong>Polar Compensation:</strong> Prayer engines fail at latitudes where twilight doesn't occur. Clamped to ±65°.</li><li><strong>Night Rule:</strong> HighLatitudeRule.MIDDLE_OF_THE_NIGHT fallback prevents null timetables.</li><li><strong>Season Aware:</strong> Dynamic adjustment for midnight sun and polar night periods.</li></ul><div class="tag-row" style="border:none;padding:0;margin-top:10px"><span class="tag">Lat Clamping</span><span class="tag">HighLatitudeRule</span><span class="tag">Polar Fix</span></div>`,
+            ffmpeg: `<div class="sp-title">🎬 FFmpeg Processing Pipeline</div><ul class="sp-list"><li><strong>Thread Isolation:</strong> Media transforms offloaded to dedicated worker threads.</li><li><strong>Single-Pass Graphs:</strong> reverse + overlay combined into one FFmpeg command. No intermediate files.</li><li><strong>Overlay Compositing:</strong> Watermark layers compiled inside render passes at target resolution.</li></ul><div class="tag-row" style="border:none;padding:0;margin-top:10px"><span class="tag">FFmpeg</span><span class="tag">Filter Graph</span><span class="tag">Overlay</span></div>`
+        };
+        function showSpec(e, k) {
+            document.querySelectorAll('.spec-btn').forEach(b => b.classList.remove('on'));
+            e.target.classList.add('on');
+            document.getElementById('spec-out').innerHTML = specData[k];
+        }
+
+        /* ── Contact → Gmail ── */
+        document.getElementById('c-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const n=document.getElementById('fn').value, em=document.getElementById('fe').value,
+                  s=document.getElementById('fs').value, m=document.getElementById('fm').value;
+            window.location.href = `mailto:ykhkpk@gmail.com?subject=${encodeURIComponent(s)}&body=${encodeURIComponent(`Hi Yasir,\n\nI'm ${n} (${em}).\n\n${m}`)}`;
+        });
+
+        /* ── Scroll Reveal ── */
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    </script>
 </body>
 </html>
