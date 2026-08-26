@@ -556,6 +556,113 @@
         .footer-link svg { width: 14px; height: 14px; fill: currentColor; }
 
         /* ══════════════════════════════════════════
+           PUBLISHED APPS — GOOGLE PLAY
+           ══════════════════════════════════════════ */
+        .apps-showcase {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        .app-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden;
+            transition: all 0.4s var(--ease); position: relative;
+        }
+        .app-card:hover {
+            border-color: var(--border-h); background: var(--card-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .app-card-img {
+            width: 100%; height: 280px; object-fit: cover;
+            object-position: top center;
+            border-bottom: 1px solid var(--border);
+            transition: transform 0.6s var(--ease);
+        }
+        .app-card:hover .app-card-img {
+            transform: scale(1.03);
+        }
+        .app-card-img-wrap {
+            overflow: hidden; position: relative;
+        }
+        .app-card-img-wrap::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 60px;
+            background: linear-gradient(to top, var(--card), transparent);
+            pointer-events: none;
+        }
+        .app-card-body {
+            padding: 20px 22px 22px;
+        }
+        .app-card-platform {
+            font-family: var(--ff-mono); font-size: 9px; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .app-card-platform .live-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--green); display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .app-card-name {
+            font-family: var(--ff-display); font-size: 18px;
+            font-weight: 600; margin-bottom: 6px; letter-spacing: -0.5px;
+        }
+        .app-card-desc {
+            font-size: 12.5px; color: var(--gray); line-height: 1.6;
+            margin-bottom: 14px;
+        }
+        .app-card-stack {
+            display: flex; flex-wrap: wrap; gap: 4px;
+            margin-bottom: 16px;
+        }
+        .app-card-chip {
+            font-size: 9px; color: var(--muted);
+            background: rgba(255,255,255,0.015); padding: 2px 7px;
+            border-radius: 3px; border: 1px solid var(--border);
+        }
+        .app-card-actions {
+            display: flex; align-items: center; gap: 10px;
+            padding-top: 14px; border-top: 1px solid var(--border);
+        }
+        .play-store-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(var(--gold-rgb), 0.08);
+            border: 1px solid rgba(var(--gold-rgb), 0.2);
+            color: var(--gold); font-family: var(--ff-display);
+            font-size: 11px; font-weight: 600;
+            padding: 8px 16px; border-radius: 8px;
+            transition: all 0.3s var(--ease); text-decoration: none;
+        }
+        .play-store-btn:hover {
+            background: var(--gold); color: var(--black);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(var(--gold-rgb), 0.2);
+        }
+        .play-store-btn svg {
+            width: 16px; height: 16px; fill: currentColor;
+        }
+        .app-card-rating {
+            font-family: var(--ff-mono); font-size: 10px; color: var(--muted);
+            display: flex; align-items: center; gap: 4px;
+            margin-left: auto;
+        }
+        .app-card-rating .stars {
+            color: #fbbf24; font-size: 11px;
+        }
+        .apps-section-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--ff-mono); font-size: 10px;
+            color: var(--green); margin-bottom: 12px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            padding: 4px 12px; border-radius: 100px;
+            background: var(--green-dim);
+        }
+        .apps-section-badge .badge-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--green); animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        /* ══════════════════════════════════════════
            SCROLL REVEAL
            ══════════════════════════════════════════ */
         .reveal {
@@ -611,6 +718,7 @@
             <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#published-apps">Play Store</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="Yasir_Khan_Resumedv.pdf" class="nav-resume" download>&darr; Resume</a></li>
@@ -973,10 +1081,148 @@
         </div>
     </section>
 
+    <!-- PUBLISHED APPS — GOOGLE PLAY -->
+    <section class="section" id="published-apps">
+        <div class="wrap">
+            <span class="section-label">03 &mdash; Published Apps</span>
+            <h2 class="section-title">Live on Google Play</h2>
+            <div class="apps-section-badge"><span class="badge-dot"></span> 5 Apps Published &amp; Available for Download</div>
+            <p class="section-desc">These apps are live on the Google Play Store, built and shipped by me. Each one solves a real problem for real users.</p>
+
+            <div class="apps-showcase">
+                <!-- WhatsApp Status Saver -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="whatsapp_status.jpg" alt="WhatsApp Status Saver App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Android &middot; Published on Play Store</div>
+                        <h3 class="app-card-name">WhatsApp Status Saver</h3>
+                        <p class="app-card-desc">Save and download WhatsApp statuses &mdash; images, videos, and quotes. Gallery grid view with SAF compatibility across Android 8&ndash;14. Batch save with one tap.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">Kotlin</span>
+                            <span class="app-card-chip">SAF</span>
+                            <span class="app-card-chip">MediaStore</span>
+                            <span class="app-card-chip">Gallery</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=com.stickers.qoutes.save.go" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompi -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="prompi.jpg" alt="Prompi AI Prompt Generator App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Flutter &middot; AI / LLM</div>
+                        <h3 class="app-card-name">Prompi &mdash; AI Prompt Generator</h3>
+                        <p class="app-card-desc">AI-powered prompt generator with real-time LLM chat, streaming responses, voice-to-prompt via live microphone audio streaming, and categorized prompt templates for any use case.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">Flutter</span>
+                            <span class="app-card-chip">LLM API</span>
+                            <span class="app-card-chip">Speech-to-Text</span>
+                            <span class="app-card-chip">Audio Streaming</span>
+                            <span class="app-card-chip">Riverpod</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=com.generate.prompt.ai" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt Generator -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="prompt_generator.jpg" alt="AI Prompt Generator App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Flutter &middot; Productivity</div>
+                        <h3 class="app-card-name">AI Prompt Generator</h3>
+                        <p class="app-card-desc">Template-driven prompt builder with categorized templates for Writing, Coding, Marketing, and Art. Variable substitution, search, and one-tap export to clipboard or AI chat apps.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">Flutter</span>
+                            <span class="app-card-chip">Templates</span>
+                            <span class="app-card-chip">Categories</span>
+                            <span class="app-card-chip">Clipboard</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=com.prompt.generator.ai" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="calculator.jpg" alt="Scientific Calculator App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Android &middot; Utility</div>
+                        <h3 class="app-card-name">Scientific Calculator</h3>
+                        <p class="app-card-desc">Full-featured scientific calculator with sin, cos, tan, log, ln, square root, power functions, and unit conversions. Clean dark UI with expression history and RAD/DEG modes.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">Kotlin</span>
+                            <span class="app-card-chip">Compose</span>
+                            <span class="app-card-chip">Math Engine</span>
+                            <span class="app-card-chip">Expression Parser</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=scientificcalculator.calculatorapp.simplecalculator.calculator" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR & Barcode Scanner -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="qr_barcode.jpg" alt="QR and Barcode Scanner App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Android &middot; Camera &amp; ML</div>
+                        <h3 class="app-card-name">QR &amp; Barcode Scanner</h3>
+                        <p class="app-card-desc">Fast QR code and barcode scanner using CameraX + ML Kit. Features batch scanning, timestamped history, URL detection, WiFi auto-connect, and vCard import from scanned contacts.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">CameraX</span>
+                            <span class="app-card-chip">ML Kit</span>
+                            <span class="app-card-chip">Barcode</span>
+                            <span class="app-card-chip">Frame Skip</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=com.qrscanner.scan.qrcode.barcode" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- EXPERIENCE -->
     <section class="section" id="experience">
         <div class="wrap">
-            <span class="section-label">03 &mdash; Career Timeline</span>
+            <span class="section-label">04 &mdash; Career Timeline</span>
             <h2 class="section-title">Work Experience</h2>
             <p class="section-desc">Progressive growth from junior developer to leading architecture decisions across production mobile teams.</p>
 
@@ -1036,7 +1282,7 @@
     <!-- CONTACT -->
     <section class="section" id="contact">
         <div class="wrap">
-            <span class="section-label">04 &mdash; Let's Connect</span>
+            <span class="section-label">05 &mdash; Let's Connect</span>
             <h2 class="section-title">Ready to Hire?</h2>
             <p class="section-desc">Open to remote roles, freelance projects, and technical collaborations. I respond within 24 hours.</p>
 
