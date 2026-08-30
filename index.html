@@ -747,7 +747,7 @@
                 </div>
                 <div class="hero-metrics">
                     <div><div class="metric-num">5+</div><div class="metric-label">Years Experience</div></div>
-                    <div><div class="metric-num">11</div><div class="metric-label">Apps Shipped</div></div>
+                    <div><div class="metric-num">12+</div><div class="metric-label">Apps Shipped</div></div>
                     <div><div class="metric-num">3</div><div class="metric-label">Companies</div></div>
                     <div><div class="metric-num">2</div><div class="metric-label">Platforms</div></div>
                 </div>
@@ -1006,20 +1006,20 @@
                     </div>
                     <div class="proj-stack"><span class="proj-chip">FusedLocation</span><span class="proj-chip">Maps SDK</span><span class="proj-chip">SQLite</span></div>
                 </div>
-                <!-- 5 Video Editor -->
+                <!-- 5 EasySkills LMS -->
                 <div class="proj-card featured reveal">
-                    <div class="proj-platform">Android &middot; Media Processing</div>
-                    <h3 class="proj-name">Video Editor Extensions</h3>
-                    <p class="proj-desc">Extended pre-built editor with reverse playback, MP4&rarr;MP3 extraction, and dynamic watermark overlay via FFmpeg command chains.</p>
+                    <div class="proj-platform">Flutter &middot; Riverpod &middot; Clean Architecture &middot; LMS</div>
+                    <h3 class="proj-name">EasySkills LMS</h3>
+                    <p class="proj-desc">Learning Management System (LMS) mobile platform for EasySkills.org featuring passwordless OTP student portal, interactive 4-week modular course syllabus, YouTube creator tools, and offline access.</p>
                     <div class="proj-case">
                         <div class="proj-case-label">Challenge</div>
-                        <div class="proj-case-text">Chaining multiple FFmpeg operations created intermediate files, doubling export time.</div>
+                        <div class="proj-case-text">Students needed mobile LMS access to video modules, creator calculators, and payment verification with zero drop-off on spotty networks.</div>
                     </div>
                     <div class="proj-impact">
                         <div class="proj-impact-label">Solution &amp; Impact</div>
-                        <div class="proj-impact-text">Designed single-pass filter graphs combining reverse + overlay. Reduced export time by 40%.</div>
+                        <div class="proj-impact-text">Engineered offline-first Clean Architecture with Riverpod, multipart screenshot upload to Bunny.net CDN, EmailJS alerts, and 100% offline syllabus caching.</div>
                     </div>
-                    <div class="proj-stack"><span class="proj-chip">FFmpeg</span><span class="proj-chip">Filter Graphs</span><span class="proj-chip">Threads</span></div>
+                    <div class="proj-stack"><span class="proj-chip">Flutter</span><span class="proj-chip">Riverpod</span><span class="proj-chip">Clean Arch</span><span class="proj-chip">LMS</span><span class="proj-chip">Bunny.net</span><span class="proj-chip">OTP Auth</span></div>
                 </div>
                 <!-- 6 AI Prompt App -->
                 <div class="proj-card featured reveal">
@@ -1041,10 +1041,16 @@
             <!-- More Projects Collapsible -->
             <div class="more-projects">
                 <button class="more-toggle" id="more-toggle" onclick="toggleMore()">
-                    <span>Show 5 More Projects</span>
+                    <span>Show 6 More Projects</span>
                     <span class="arrow">&#9660;</span>
                 </button>
                 <div class="more-grid" id="more-grid">
+                    <div class="mini-card reveal">
+                        <div class="mini-platform">Android &middot; Media Processing</div>
+                        <div class="mini-name">Video Editor Extensions</div>
+                        <div class="mini-desc">Single-pass FFmpeg filter graphs for reverse playback, MP4 to MP3 extraction, and dynamic watermark overlay with 40% export speedup.</div>
+                        <div class="mini-stack"><span class="mini-chip">FFmpeg</span><span class="mini-chip">Filter Graphs</span><span class="mini-chip">Threads</span></div>
+                    </div>
                     <div class="mini-card reveal">
                         <div class="mini-platform">Android &middot; Input Method</div>
                         <div class="mini-name">Custom IME Keyboard</div>
@@ -1354,7 +1360,7 @@
         const cmds = {
             help: 'Commands:<br>\u2022 <span style="color:var(--gold)">skills</span> \u2014 Tech competencies<br>\u2022 <span style="color:var(--gold)">projects</span> \u2014 Shipped modules<br>\u2022 <span style="color:var(--gold)">contact</span> \u2014 Reach me<br>\u2022 <span style="color:var(--gold)">experience</span> \u2014 Work history<br>\u2022 <span style="color:var(--gold)">resume</span> \u2014 Download resume<br>\u2022 <span style="color:var(--gold)">clear</span> \u2014 Clear console',
             skills: 'Stack:<br>\u2192 Kotlin \u00b7 Compose \u00b7 Compose Multiplatform<br>\u2192 Dart \u00b7 Flutter \u00b7 Riverpod<br>\u2192 Clean Architecture \u00b7 Hilt \u00b7 Koin \u00b7 Ktor<br>\u2192 SensorManager \u00b7 FFmpeg \u00b7 Maps SDK<br>\u2192 LLM APIs \u00b7 Prompt Engineering \u00b7 ML Kit',
-            projects: 'Featured (6):<br>\u2192 Quran Kareem \u2014 Compass + Prayer + Sensor Calibration<br>\u2192 Stylo AI \u2014 LLM Fashion Recommendations<br>\u2192 Scoop Messenger \u2014 WebSocket Real-time Chat<br>\u2192 GPS Speedometer \u2014 Maps & Telemetry<br>\u2192 Video Editor \u2014 FFmpeg Processing<br>\u2192 AI Prompt App \u2014 LLM + Audio Streaming Speech-to-Text<br><br>+ 5 more (Custom IME, Quote Designer, Prompt Generator, QR Scanner, Status Saver...)',
+            projects: 'Featured (6):<br>\u2192 EasySkills LMS \u2014 Learning Management System (Flutter \u00b7 Riverpod \u00b7 Clean Arch)<br>\u2192 Quran Kareem \u2014 Compass + Prayer + Sensor Calibration<br>\u2192 Stylo AI \u2014 LLM Fashion Recommendations<br>\u2192 Scoop Messenger \u2014 WebSocket Real-time Chat<br>\u2192 GPS Speedometer \u2014 Maps & Telemetry<br>\u2192 Video Editor \u2014 FFmpeg Processing<br>\u2192 AI Prompt App \u2014 LLM + Audio Streaming Speech-to-Text<br><br>+ 5 more (Custom IME, Quote Designer, Prompt Generator, QR Scanner, Status Saver...)',
             contact: '\u2192 Email: <a href="mailto:ykhkpk@gmail.com" style="color:var(--gold)">ykhkpk@gmail.com</a><br>\u2192 Phone: +92 315 0012413<br>\u2192 LinkedIn: <a href="https://pk.linkedin.com/in/yasir-khan-986152193" target="_blank" style="color:var(--gold)">linkedin.com/in/yasir-khan</a>',
             experience: '\u2192 2022\u2013Present: Ainsoftech (Mobile Dev Lead) \u2014 7+ apps shipped<br>\u2192 Jan\u2013May 2022: CodingStorms (Mobile Dev) \u2014 Cross-platform delivery<br>\u2192 2020\u20132021: Solution of Technologies (Junior) \u2014 Foundation building',
             resume: '<span style="color:var(--gold)">Downloading resume...</span><br>\u2192 If download doesn\'t start, <a href="Yasir_Khan_Resumedv.pdf" style="color:var(--gold)" download>click here</a>.'
