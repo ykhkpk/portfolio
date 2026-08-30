@@ -945,8 +945,23 @@
             <h2 class="section-title">Featured Projects</h2>
             <p class="section-desc">Each project follows a Goal &rarr; Challenge &rarr; Solution &rarr; Impact framework. These are real products shipped to real users &mdash; not tutorials or clones.</p>
 
-            <div class="projects-grid">
-                <!-- 1 Quran Kareem -->
+                        <div class="projects-grid">
+                <!-- 1 EasySkills LMS -->
+                <div class="proj-card featured reveal">
+                    <div class="proj-platform">Flutter &middot; Riverpod &middot; Clean Architecture &middot; LMS</div>
+                    <h3 class="proj-name">EasySkills LMS</h3>
+                    <p class="proj-desc">Learning Management System (LMS) mobile platform for EasySkills.org featuring passwordless OTP student portal, interactive 4-week modular course syllabus, YouTube creator tools, and offline access.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Students needed mobile LMS access to video modules, creator calculators, and payment verification with zero drop-off on spotty networks.</div>
+                    </div>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution &amp; Impact</div>
+                        <div class="proj-impact-text">Engineered offline-first Clean Architecture with Riverpod, multipart screenshot upload to Bunny.net CDN, EmailJS alerts, and 100% offline syllabus caching.</div>
+                    </div>
+                    <div class="proj-stack"><span class="proj-chip">Flutter</span><span class="proj-chip">Riverpod</span><span class="proj-chip">Clean Arch</span><span class="proj-chip">LMS</span><span class="proj-chip">Bunny.net</span><span class="proj-chip">OTP Auth</span></div>
+                </div>
+                <!-- 2 Quran Kareem -->
                 <div class="proj-card featured reveal">
                     <div class="proj-platform">Android Native &middot; Clean Architecture</div>
                     <h3 class="proj-name">Quran Kareem</h3>
@@ -961,7 +976,7 @@
                     </div>
                     <div class="proj-stack"><span class="proj-chip">Compose</span><span class="proj-chip">Hilt</span><span class="proj-chip">Room</span><span class="proj-chip">Canvas</span><span class="proj-chip">SensorManager</span></div>
                 </div>
-                <!-- 2 Stylo AI -->
+                <!-- 3 Stylo AI -->
                 <div class="proj-card featured reveal">
                     <div class="proj-platform">Flutter &middot; AI / LLM</div>
                     <h3 class="proj-name">Stylo AI</h3>
@@ -976,7 +991,7 @@
                     </div>
                     <div class="proj-stack"><span class="proj-chip">LLM API</span><span class="proj-chip">Riverpod</span><span class="proj-chip">Weather API</span><span class="proj-chip">Dart</span></div>
                 </div>
-                <!-- 3 Scoop Messenger -->
+                <!-- 4 Scoop Messenger -->
                 <div class="proj-card featured reveal">
                     <div class="proj-platform">Android &middot; Real-time Communications</div>
                     <h3 class="proj-name">Scoop Messenger</h3>
@@ -991,7 +1006,7 @@
                     </div>
                     <div class="proj-stack"><span class="proj-chip">WebSocket</span><span class="proj-chip">Video/Audio</span><span class="proj-chip">FCM</span><span class="proj-chip">Service</span></div>
                 </div>
-                <!-- 4 GPS Speedometer -->
+                <!-- 5 GPS Speedometer -->
                 <div class="proj-card featured reveal">
                     <div class="proj-platform">Android &middot; Maps &amp; Telemetry</div>
                     <h3 class="proj-name">GPS Speedometer &amp; Tracker</h3>
@@ -1005,21 +1020,6 @@
                         <div class="proj-impact-text">Implemented 500m spatial + 10min temporal gates. 70% battery savings during tracking sessions.</div>
                     </div>
                     <div class="proj-stack"><span class="proj-chip">FusedLocation</span><span class="proj-chip">Maps SDK</span><span class="proj-chip">SQLite</span></div>
-                </div>
-                <!-- 5 EasySkills LMS -->
-                <div class="proj-card featured reveal">
-                    <div class="proj-platform">Flutter &middot; Riverpod &middot; Clean Architecture &middot; LMS</div>
-                    <h3 class="proj-name">EasySkills LMS</h3>
-                    <p class="proj-desc">Learning Management System (LMS) mobile platform for EasySkills.org featuring passwordless OTP student portal, interactive 4-week modular course syllabus, YouTube creator tools, and offline access.</p>
-                    <div class="proj-case">
-                        <div class="proj-case-label">Challenge</div>
-                        <div class="proj-case-text">Students needed mobile LMS access to video modules, creator calculators, and payment verification with zero drop-off on spotty networks.</div>
-                    </div>
-                    <div class="proj-impact">
-                        <div class="proj-impact-label">Solution &amp; Impact</div>
-                        <div class="proj-impact-text">Engineered offline-first Clean Architecture with Riverpod, multipart screenshot upload to Bunny.net CDN, EmailJS alerts, and 100% offline syllabus caching.</div>
-                    </div>
-                    <div class="proj-stack"><span class="proj-chip">Flutter</span><span class="proj-chip">Riverpod</span><span class="proj-chip">Clean Arch</span><span class="proj-chip">LMS</span><span class="proj-chip">Bunny.net</span><span class="proj-chip">OTP Auth</span></div>
                 </div>
                 <!-- 6 AI Prompt App -->
                 <div class="proj-card featured reveal">
@@ -1038,7 +1038,7 @@
                 </div>
             </div>
 
-            <!-- More Projects Collapsible -->
+<!-- More Projects Collapsible -->
             <div class="more-projects">
                 <button class="more-toggle" id="more-toggle" onclick="toggleMore()">
                     <span>Show 6 More Projects</span>
