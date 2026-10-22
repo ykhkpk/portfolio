@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasir Khan — Senior Android Developer | Kotlin · Jetpack Compose · Clean Architecture</title>
+    <meta name="description" content="Yasir Khan — Senior Android Developer with 5+ years shipping production Android applications using Kotlin, Jetpack Compose, and Hilt. Expert in Modern Clean Architecture, strict SOLID principles, Room SQLite, SensorManager telemetry, FFmpeg media processing, and Google Play Store deployment.">
+    <meta name="author" content="Yasir Khan">
+    <meta name="keywords" content="Yasir Khan, Senior Android Developer, Kotlin, Jetpack Compose, Hilt, Room, Coroutines, Flow, SensorManager, CameraX, ML Kit, FFmpeg, Clean Architecture, SOLID Principles, Google Play Store, Lahore, Pakistan">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Yasir Khan — Senior Android Developer | Kotlin · Jetpack Compose · Clean Architecture">
+    <meta property="og:description" content="5+ years building production Android applications with Kotlin, Jetpack Compose, Room, and Clean Architecture. 5 apps published on Google Play. Open to senior Android roles.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ykhkpk.github.io/portfolio/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yasir Khan — Senior Android Developer">
+    <meta name="twitter:description" content="5+ years shipping production iOS, Android & Flutter apps. Clean Architecture, SOLID, GRDB SQLite, low-level graphics & P2P cryptography.">
+    <link rel="canonical" href="https://ykhkpk.github.io/portfolio/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yasir Khan",
+        "jobTitle": "Senior Android Developer",
+        "url": "https://ykhkpk.github.io/portfolio/",
+        "sameAs": [
+            "https://pk.linkedin.com/in/yasir-khan-986152193"
+        ],
+        "knowsAbout": ["Android Development", "Kotlin", "Jetpack Compose", "Hilt", "Room", "Coroutines", "Flow", "SensorManager", "CameraX", "ML Kit", "FFmpeg", "Clean Architecture", "SOLID Principles", "Google Play Store"],
+        "email": "ykhkpk@gmail.com"
+    }
+    </script>
+
+    <style>
+        /* ══════════════════════════════════════════
+           DESIGN SYSTEM — Recruiter-Optimized 2026
+           ══════════════════════════════════════════ */
+        :root {
+            --black: #050505;
+            --card: #0c0c0e;
+            --card-hover: #131316;
+            --gold: #c9ad8c;
+            --gold-rgb: 201, 173, 140;
+            --gold-dim: rgba(201, 173, 140, 0.06);
+            --sage: #5b8c85;
+            --sage-rgb: 91, 140, 133;
+            --white: #ececf0;
+            --gray: #8b8fa0;
+            --muted: #484c5c;
+            --border: rgba(255, 255, 255, 0.05);
+            --border-h: rgba(201, 173, 140, 0.2);
+            --green: #4ade80;
+            --green-dim: rgba(74, 222, 128, 0.08);
+            --ff-display: 'Instrument Sans', sans-serif;
+            --ff-body: 'Inter', sans-serif;
+            --ff-mono: 'JetBrains Mono', monospace;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ── Reset ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--ff-body);
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--white); }
+        ::selection { background: rgba(var(--gold-rgb), 0.25); color: var(--white); }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: #1a1a1f; border-radius: 2px; }
+
+        /* ══════════════════════════════════════════
+           FLOATING ORB BACKGROUND
+           ══════════════════════════════════════════ */
+        .orbs {
+            position: fixed; inset: 0; z-index: 0;
+            pointer-events: none; overflow: hidden;
+        }
+        .orb {
+            position: absolute; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.015) 40%, transparent 70%);
+        }
+        .o1 { width: 700px; height: 700px; top: -15%; right: -10%; animation: drift1 20s ease-in-out infinite; }
+        .o2 { width: 500px; height: 500px; bottom: 5%; left: -8%; animation: drift2 25s ease-in-out infinite; }
+        .o3 { width: 400px; height: 400px; top: 35%; right: 20%; animation: drift3 18s ease-in-out infinite; }
+        .o4 { width: 320px; height: 320px; top: 65%; left: 25%; animation: drift4 22s ease-in-out infinite; }
+        .o5 { width: 550px; height: 550px; top: 15%; left: 35%; background: radial-gradient(circle, rgba(var(--gold-rgb),0.025) 0%, transparent 60%); animation: drift5 28s ease-in-out infinite; }
+        .o6 { width: 250px; height: 250px; bottom: 30%; right: 5%; animation: drift6 16s ease-in-out infinite; }
+
+        @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-50px,40px) scale(1.06)} }
+        @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(60px,-50px) scale(1.08)} }
+        @keyframes drift3 { 0%,100%{transform:translate(0,0)} 33%{transform:translate(-35px,55px)} 66%{transform:translate(45px,-25px)} }
+        @keyframes drift4 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-70px,-35px) scale(1.1)} }
+        @keyframes drift5 { 0%,100%{transform:translate(0,0);opacity:.5} 50%{transform:translate(35px,45px);opacity:1} }
+        @keyframes drift6 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,40px)} }
+
+        /* ══════════════════════════════════════════
+           LAYOUT
+           ══════════════════════════════════════════ */
+        .wrap {
+            max-width: 1200px; margin: 0 auto; padding: 0 28px;
+            position: relative; z-index: 1;
+        }
+
+        /* ══════════════════════════════════════════
+           NAVIGATION
+           ══════════════════════════════════════════ */
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(5,5,5,0.88); backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav .wrap {
+            display: flex; justify-content: space-between; align-items: center;
+            height: 64px;
+        }
+        .nav-brand {
+            font-family: var(--ff-display); font-size: 16px; font-weight: 600;
+            color: var(--white); letter-spacing: -0.3px;
+        }
+        .nav-brand em { font-style: normal; color: var(--gold); }
+        .nav-menu { display: flex; gap: 28px; list-style: none; align-items: center; }
+        .nav-menu a {
+            font-size: 13px; color: var(--gray); font-weight: 500;
+            letter-spacing: 0.3px; position: relative; transition: color 0.25s;
+        }
+        .nav-menu a::after {
+            content: ''; position: absolute; bottom: -3px; left: 0;
+            width: 0; height: 1px; background: var(--gold);
+            transition: width 0.3s var(--ease);
+        }
+        .nav-menu a:hover { color: var(--white); }
+        .nav-menu a:hover::after { width: 100%; }
+        .nav-resume {
+            font-family: var(--ff-display); font-size: 11px; font-weight: 600;
+            padding: 6px 14px; border-radius: 6px; letter-spacing: 0.3px;
+            background: rgba(var(--gold-rgb), 0.1); color: var(--gold);
+            border: 1px solid rgba(var(--gold-rgb), 0.2);
+            transition: all 0.3s var(--ease);
+        }
+        .nav-resume:hover {
+            background: var(--gold); color: var(--black);
+            transform: translateY(-1px);
+        }
+        .nav-resume::after { display: none; }
+        .nav-toggle {
+            display: none; background: none; border: none;
+            color: var(--white); font-size: 20px; cursor: pointer;
+        }
+
+        /* ══════════════════════════════════════════
+           HERO SECTION
+           ══════════════════════════════════════════ */
+        .hero {
+            min-height: 92vh; display: flex; align-items: center;
+            padding: 80px 0 60px;
+        }
+        .hero .wrap {
+            display: grid; grid-template-columns: 1fr 300px;
+            gap: 60px; align-items: center;
+        }
+        .hero-status {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--ff-mono); font-size: 11px;
+            color: var(--green); margin-bottom: 20px;
+            border: 1px solid rgba(74, 222, 128, 0.2); padding: 5px 14px;
+            border-radius: 100px; background: var(--green-dim);
+        }
+        .hero-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.85)} }
+
+        .hero h1 {
+            font-family: var(--ff-display); font-size: 52px;
+            font-weight: 700; line-height: 1.08; letter-spacing: -2.5px;
+            margin-bottom: 8px;
+        }
+        .hero h1 .accent { color: var(--gold); }
+        .hero-subtitle {
+            font-family: var(--ff-display); font-size: 18px;
+            color: var(--gold); font-weight: 500;
+            margin-bottom: 6px; letter-spacing: -0.3px;
+        }
+        .hero-niche {
+            font-size: 13px; color: var(--gray); font-family: var(--ff-mono);
+            margin-bottom: 20px; letter-spacing: 0.2px;
+        }
+        .hero-text {
+            font-size: 15px; color: var(--gray); line-height: 1.7;
+            max-width: 480px; margin-bottom: 32px;
+        }
+        .hero-cta {
+            display: flex; gap: 10px; flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--ff-display); font-size: 13px; font-weight: 600;
+            padding: 12px 24px; border-radius: 8px; cursor: pointer;
+            transition: all 0.3s var(--ease); border: none;
+        }
+        .btn-fill {
+            background: var(--gold); color: var(--black);
+        }
+        .btn-fill:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(var(--gold-rgb),0.2); color: var(--black); }
+        .btn-ghost {
+            background: transparent; color: var(--white);
+            border: 1px solid var(--border);
+        }
+        .btn-ghost:hover { border-color: var(--gold); background: var(--gold-dim); color: var(--white); }
+        .btn-github {
+            background: transparent; color: var(--white);
+            border: 1px solid var(--border);
+        }
+        .btn-github:hover { border-color: var(--white); background: rgba(255,255,255,0.04); color: var(--white); }
+        .btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+        .hero-photo-col {
+            display: flex; justify-content: center;
+        }
+        .hero-photo-frame {
+            position: relative; width: 260px; height: 320px;
+            border-radius: 16px; overflow: hidden;
+        }
+        .hero-photo-frame::before {
+            content: ''; position: absolute; inset: -2px;
+            background: linear-gradient(135deg, var(--gold), var(--sage));
+            border-radius: 18px; z-index: -1; opacity: 0.5;
+        }
+        .hero-photo {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top;
+            border-radius: 16px;
+            border: 3px solid var(--black);
+        }
+
+        .hero-metrics {
+            display: flex; gap: 40px; margin-top: 48px;
+            padding-top: 28px; border-top: 1px solid var(--border);
+        }
+        .metric-num {
+            font-family: var(--ff-display); font-size: 28px;
+            font-weight: 700; color: var(--gold); letter-spacing: -1px;
+        }
+        .metric-label {
+            font-size: 10px; color: var(--muted);
+            text-transform: uppercase; letter-spacing: 1.5px; margin-top: 2px;
+        }
+
+        /* ══════════════════════════════════════════
+           WHY HIRE ME — VALUE PROPOSITION
+           ══════════════════════════════════════════ */
+        .value-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .value-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 28px 24px;
+            transition: all 0.4s var(--ease); position: relative; overflow: hidden;
+        }
+        .value-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0; transition: opacity 0.4s;
+        }
+        .value-card:hover { border-color: var(--border-h); background: var(--card-hover); transform: translateY(-4px); }
+        .value-card:hover::before { opacity: 1; }
+        .value-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: rgba(var(--gold-rgb), 0.06); border: 1px solid rgba(var(--gold-rgb), 0.12);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; margin-bottom: 16px;
+        }
+        .value-title {
+            font-family: var(--ff-display); font-size: 16px;
+            font-weight: 600; margin-bottom: 8px; letter-spacing: -0.3px;
+        }
+        .value-text {
+            font-size: 13px; color: var(--gray); line-height: 1.6;
+        }
+        .value-tags {
+            display: flex; flex-wrap: wrap; gap: 4px; margin-top: 14px;
+            padding-top: 12px; border-top: 1px solid var(--border);
+        }
+        .value-tag {
+            font-family: var(--ff-mono); font-size: 9px; padding: 2px 8px;
+            border: 1px solid var(--border); border-radius: 4px; color: var(--muted);
+        }
+
+        /* ══════════════════════════════════════════
+           SECTION SYSTEM
+           ══════════════════════════════════════════ */
+        .section {
+            padding: 80px 0;
+        }
+        .section-label {
+            font-family: var(--ff-mono); font-size: 10px;
+            color: var(--gold); text-transform: uppercase;
+            letter-spacing: 2px; margin-bottom: 8px; display: block;
+        }
+        .section-title {
+            font-family: var(--ff-display); font-size: 32px;
+            font-weight: 700; letter-spacing: -1.5px; margin-bottom: 12px;
+        }
+        .section-desc {
+            font-size: 14px; color: var(--gray); max-width: 560px;
+            margin-bottom: 40px;
+        }
+
+        /* ══════════════════════════════════════════
+           BENTO GRID — ABOUT
+           ══════════════════════════════════════════ */
+        .bento {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 24px; position: relative;
+            overflow: hidden; transition: all 0.4s var(--ease);
+        }
+        .card:hover {
+            border-color: var(--border-h); background: var(--card-hover);
+            transform: translateY(-3px);
+        }
+
+        /* Architecture Cell */
+        .c-arch { grid-column: span 5; }
+        .arch-stack { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+        .arch-layer {
+            border: 1px solid var(--border); border-radius: 8px;
+            padding: 10px 14px; transition: border-color 0.3s;
+        }
+        .arch-layer:hover { border-color: var(--gold); }
+        .arch-layer.highlight { border-color: var(--gold); }
+        .arch-layer h4 { font-size: 12px; font-weight: 600; }
+        .arch-layer p { font-size: 10.5px; color: var(--gray); margin-top: 1px; }
+        .arch-arrow { text-align: center; font-size: 9px; color: var(--muted); }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+        .tag { font-family: var(--ff-mono); font-size: 9px; padding: 2px 8px; border: 1px solid var(--border); border-radius: 4px; color: var(--gray); }
+
+        /* Terminal Cell */
+        .c-term { grid-column: span 7; background: #060607; min-height: 380px; display: flex; flex-direction: column; }
+        .term-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 12px; }
+        .term-dots { display: flex; gap: 5px; }
+        .td { width: 8px; height: 8px; border-radius: 50%; }
+        .td-r { background: #ff5f57; } .td-y { background: #febc2e; } .td-g { background: #28c840; }
+        .term-label { font-family: var(--ff-mono); font-size: 10px; color: var(--muted); }
+        .term-out { font-family: var(--ff-mono); font-size: 11px; color: var(--gray); flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; line-height: 1.5; }
+        .term-in { display: flex; align-items: center; gap: 6px; margin-top: auto; border-top: 1px solid var(--border); padding-top: 10px; }
+        .term-caret { color: var(--gold); font-family: var(--ff-mono); font-size: 13px; }
+        .term-field { background: transparent; border: none; outline: none; color: var(--white); font-family: var(--ff-mono); font-size: 11px; flex: 1; }
+
+        /* Specs Cell */
+        .c-specs { grid-column: span 7; background: #060607; padding: 0; display: flex; flex-direction: column; }
+        .specs-nav { background: #0a0a0c; display: flex; border-bottom: 1px solid var(--border); }
+        .spec-btn { font-family: var(--ff-mono); font-size: 10.5px; padding: 11px 16px; background: transparent; border: none; color: var(--muted); cursor: pointer; border-right: 1px solid var(--border); transition: all 0.2s; }
+        .spec-btn.on { color: var(--gold); background: #060607; }
+        .spec-btn:hover { color: var(--gray); }
+        .spec-body { padding: 22px; overflow-y: auto; height: 260px; }
+        .sp-title { font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 10px; }
+        .sp-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .sp-list li { padding-left: 14px; position: relative; color: var(--gray); font-size: 12px; line-height: 1.5; }
+        .sp-list li::before { content: ">"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+        /* Metric Cells */
+        .c-stat { grid-column: span 4; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 160px; }
+        .ring { position: relative; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; }
+        .ring-val { font-family: var(--ff-display); font-size: 14px; font-weight: 600; color: var(--gold); position: absolute; }
+        .stat-name { font-size: 12px; font-weight: 600; }
+        .stat-sub { font-size: 10px; color: var(--muted); }
+
+        /* Skills Cell */
+        .c-skills { grid-column: span 5; }
+        .skills-cols { display: flex; flex-direction: column; gap: 18px; margin-top: 12px; }
+        .sk-group-name { font-size: 11px; font-weight: 600; margin-bottom: 8px; }
+        .sk-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .sk-tag { font-size: 11px; color: var(--gray); border: 1px solid var(--border); padding: 3px 9px; border-radius: 4px; transition: all 0.25s; }
+        .sk-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* ══════════════════════════════════════════
+           PROJECT CASE STUDIES — FEATURED
+           ══════════════════════════════════════════ */
+        .projects-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .proj-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 24px;
+            display: flex; flex-direction: column;
+            transition: all 0.4s var(--ease);
+            min-height: 340px; position: relative;
+        }
+        .proj-card:hover { border-color: var(--border-h); background: var(--card-hover); transform: translateY(-4px); }
+        .proj-card.featured {
+            border-color: rgba(var(--gold-rgb), 0.12);
+        }
+        .proj-card.featured::before {
+            content: ''; position: absolute; top: 0; left: 24px; right: 24px;
+            height: 1px; background: linear-gradient(90deg, transparent, rgba(var(--gold-rgb), 0.3), transparent);
+        }
+        .proj-platform { font-family: var(--ff-mono); font-size: 9px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
+        .proj-name { font-family: var(--ff-display); font-size: 18px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .proj-desc { font-size: 12.5px; color: var(--gray); line-height: 1.6; margin-bottom: 16px; flex: 1; }
+
+        .proj-case {
+            background: rgba(255,255,255,0.01); border-left: 2px solid var(--gold);
+            padding: 12px 14px; border-radius: 0 8px 8px 0; margin-bottom: 14px;
+        }
+        .proj-case-label { font-family: var(--ff-mono); font-size: 8.5px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+        .proj-case-text { font-size: 11px; color: var(--gray); line-height: 1.5; }
+        .proj-impact {
+            background: rgba(var(--gold-rgb), 0.04); border-left: 2px solid var(--sage);
+            padding: 8px 12px; border-radius: 0 6px 6px 0; margin-bottom: 14px;
+        }
+        .proj-impact-label { font-family: var(--ff-mono); font-size: 8.5px; color: var(--sage); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+        .proj-impact-text { font-size: 11px; color: var(--gray); line-height: 1.45; }
+
+        .proj-stack { display: flex; flex-wrap: wrap; gap: 4px; border-top: 1px solid var(--border); padding-top: 10px; }
+        .proj-chip { font-size: 9px; color: var(--muted); background: rgba(255,255,255,0.015); padding: 2px 7px; border-radius: 3px; }
+
+        /* ── More Projects (Collapsed) ── */
+        .more-projects {
+            margin-top: 24px;
+        }
+        .more-toggle {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 14px; background: var(--card);
+            border: 1px solid var(--border); border-radius: 10px;
+            color: var(--gray); font-family: var(--ff-display); font-size: 13px;
+            font-weight: 500; cursor: pointer; transition: all 0.3s var(--ease);
+        }
+        .more-toggle:hover { border-color: var(--gold); color: var(--gold); background: var(--card-hover); }
+        .more-toggle .arrow { transition: transform 0.3s var(--ease); font-size: 11px; }
+        .more-toggle.open .arrow { transform: rotate(180deg); }
+        .more-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 12px; max-height: 0; overflow: hidden;
+            transition: max-height 0.5s var(--ease), margin-top 0.3s, opacity 0.4s;
+            opacity: 0;
+        }
+        .more-grid.open {
+            max-height: 1200px; margin-top: 16px; opacity: 1;
+        }
+        .mini-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 16px 18px;
+            transition: all 0.3s var(--ease);
+        }
+        .mini-card:hover { border-color: var(--border-h); background: var(--card-hover); transform: translateY(-2px); }
+        .mini-platform { font-family: var(--ff-mono); font-size: 8px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+        .mini-name { font-family: var(--ff-display); font-size: 14px; font-weight: 600; margin-bottom: 4px; letter-spacing: -0.3px; }
+        .mini-desc { font-size: 11px; color: var(--gray); line-height: 1.5; margin-bottom: 10px; }
+        .mini-stack { display: flex; flex-wrap: wrap; gap: 3px; }
+        .mini-chip { font-size: 8px; color: var(--muted); background: rgba(255,255,255,0.02); padding: 1px 6px; border-radius: 3px; }
+
+        /* ══════════════════════════════════════════
+           TIMELINE — EXPERIENCE
+           ══════════════════════════════════════════ */
+        .timeline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .time-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 24px;
+            transition: all 0.35s var(--ease); position: relative;
+        }
+        .time-card:hover { border-color: var(--border-h); transform: translateY(-2px); }
+        .time-badge {
+            display: inline-block; font-family: var(--ff-mono); font-size: 9px;
+            padding: 3px 8px; border-radius: 4px; margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .time-badge.current {
+            background: var(--green-dim); color: var(--green);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+        .time-badge.past {
+            background: rgba(var(--gold-rgb), 0.06); color: var(--gold);
+            border: 1px solid rgba(var(--gold-rgb), 0.12);
+        }
+        .time-date { font-family: var(--ff-mono); font-size: 10px; color: var(--gold); margin-bottom: 6px; }
+        .time-role { font-family: var(--ff-display); font-size: 16px; font-weight: 600; letter-spacing: -0.3px; }
+        .time-co { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+        .time-text { font-size: 12px; color: var(--gray); line-height: 1.6; margin-bottom: 12px; }
+        .time-highlights { list-style: none; margin-bottom: 14px; }
+        .time-highlights li {
+            font-size: 11px; color: var(--gray); line-height: 1.6;
+            padding-left: 14px; position: relative; margin-bottom: 4px;
+        }
+        .time-highlights li::before {
+            content: '\25B8'; position: absolute; left: 0; color: var(--gold); font-size: 10px;
+        }
+        .time-highlights strong { color: var(--white); font-weight: 600; }
+        .time-tech { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 10px; border-top: 1px solid var(--border); }
+        .time-chip { font-family: var(--ff-mono); font-size: 9px; color: var(--muted); background: rgba(255,255,255,0.02); padding: 2px 7px; border-radius: 3px; }
+
+        /* ══════════════════════════════════════════
+           CONTACT
+           ══════════════════════════════════════════ */
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .contact-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 18px; text-align: center;
+            transition: all 0.3s; cursor: pointer; display: block;
+            color: inherit;
+        }
+        .contact-card:hover { border-color: var(--border-h); background: var(--card-hover); color: inherit; }
+        .contact-icon { font-size: 18px; margin-bottom: 6px; }
+        .contact-label { font-family: var(--ff-mono); font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+        .contact-val { font-size: 12px; font-weight: 600; margin-top: 3px; }
+
+        .c-form { display: flex; flex-direction: column; gap: 10px; }
+        .c-form-row { display: flex; gap: 10px; }
+        .c-field { background: #060607; border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; font-family: var(--ff-body); font-size: 12px; color: var(--white); outline: none; width: 100%; transition: border-color 0.3s; }
+        .c-field:focus { border-color: var(--gold); }
+        .c-submit { background: var(--gold); color: var(--black); font-family: var(--ff-display); font-size: 12px; font-weight: 600; border: none; padding: 11px 28px; border-radius: 8px; cursor: pointer; align-self: flex-start; transition: all 0.3s; }
+        .c-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(var(--gold-rgb),0.15); }
+
+        /* ══════════════════════════════════════════
+           FOOTER
+           ══════════════════════════════════════════ */
+        .footer {
+            padding: 40px 0 32px; border-top: 1px solid var(--border);
+            position: relative; z-index: 1;
+        }
+        .footer .wrap {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .footer-copy {
+            font-family: var(--ff-mono); font-size: 10px; color: var(--muted);
+        }
+        .footer-links {
+            display: flex; gap: 20px; align-items: center;
+        }
+        .footer-link {
+            font-size: 12px; color: var(--gray); transition: color 0.2s;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .footer-link:hover { color: var(--gold); }
+        .footer-link svg { width: 14px; height: 14px; fill: currentColor; }
+
+        /* ══════════════════════════════════════════
+           PUBLISHED APPS — GOOGLE PLAY
+           ══════════════════════════════════════════ */
+        .apps-showcase {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        .app-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden;
+            transition: all 0.4s var(--ease); position: relative;
+        }
+        .app-card:hover {
+            border-color: var(--border-h); background: var(--card-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .app-card-img {
+            width: 100%; height: 280px; object-fit: cover;
+            object-position: top center;
+            border-bottom: 1px solid var(--border);
+            transition: transform 0.6s var(--ease);
+        }
+        .app-card:hover .app-card-img {
+            transform: scale(1.03);
+        }
+        .app-card-img-wrap {
+            overflow: hidden; position: relative;
+        }
+        .app-card-img-wrap::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 60px;
+            background: linear-gradient(to top, var(--card), transparent);
+            pointer-events: none;
+        }
+        .app-card-body {
+            padding: 20px 22px 22px;
+        }
+        .app-card-platform {
+            font-family: var(--ff-mono); font-size: 9px; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .app-card-platform .live-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--green); display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .app-card-name {
+            font-family: var(--ff-display); font-size: 18px;
+            font-weight: 600; margin-bottom: 6px; letter-spacing: -0.5px;
+        }
+        .app-card-desc {
+            font-size: 12.5px; color: var(--gray); line-height: 1.6;
+            margin-bottom: 14px;
+        }
+        .app-card-stack {
+            display: flex; flex-wrap: wrap; gap: 4px;
+            margin-bottom: 16px;
+        }
+        .app-card-chip {
+            font-size: 9px; color: var(--muted);
+            background: rgba(255,255,255,0.015); padding: 2px 7px;
+            border-radius: 3px; border: 1px solid var(--border);
+        }
+        .app-card-actions {
+            display: flex; align-items: center; gap: 10px;
+            padding-top: 14px; border-top: 1px solid var(--border);
+        }
+        .play-store-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(var(--gold-rgb), 0.08);
+            border: 1px solid rgba(var(--gold-rgb), 0.2);
+            color: var(--gold); font-family: var(--ff-display);
+            font-size: 11px; font-weight: 600;
+            padding: 8px 16px; border-radius: 8px;
+            transition: all 0.3s var(--ease); text-decoration: none;
+        }
+        .play-store-btn:hover {
+            background: var(--gold); color: var(--black);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(var(--gold-rgb), 0.2);
+        }
+        .play-store-btn svg {
+            width: 16px; height: 16px; fill: currentColor;
+        }
+        .app-card-rating {
+            font-family: var(--ff-mono); font-size: 10px; color: var(--muted);
+            display: flex; align-items: center; gap: 4px;
+            margin-left: auto;
+        }
+        .app-card-rating .stars {
+            color: #fbbf24; font-size: 11px;
+        }
+        .apps-section-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--ff-mono); font-size: 10px;
+            color: var(--green); margin-bottom: 12px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            padding: 4px 12px; border-radius: 100px;
+            background: var(--green-dim);
+        }
+        .apps-section-badge .badge-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--green); animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        /* ══════════════════════════════════════════
+           SCROLL REVEAL
+           ══════════════════════════════════════════ */
+        .reveal {
+            opacity: 1; transform: none;
+            transition: opacity 0.6s ease, transform 0.6s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Action Buttons for iOS Native GitHub Repos */
+        .proj-actions {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 14px; border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+        .github-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--white); font-family: var(--ff-display);
+            font-size: 11.5px; font-weight: 600;
+            padding: 8px 16px; border-radius: 8px;
+            transition: all 0.3s var(--ease); text-decoration: none;
+        }
+        .github-btn:hover {
+            background: rgba(var(--gold-rgb), 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(var(--gold-rgb), 0.2);
+        }
+        .github-btn svg { width: 15px; height: 15px; fill: currentColor; }
+        .github-tag {
+            font-family: var(--ff-mono); font-size: 9.5px; color: var(--gold);
+            letter-spacing: 0.5px;
+        }
+        .proj-badge-ios {
+            background: rgba(56, 189, 248, 0.12); color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 2px 7px; border-radius: 4px; font-size: 8.5px;
+            font-family: var(--ff-mono); text-transform: uppercase;
+        }
+
+        /* ══════════════════════════════════════════
+           RESPONSIVE
+           ══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
+            .hero-photo-col { order: -1; }
+            .hero-photo-frame { width: 200px; height: 240px; }
+            .bento > * { grid-column: span 12 !important; }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .more-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeline-grid { grid-template-columns: 1fr; }
+            .contact-layout { grid-template-columns: 1fr; }
+            .value-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+            .hero-metrics { gap: 20px; flex-wrap: wrap; }
+            .hero-cta { flex-direction: column; }
+            .hero-cta .btn { text-align: center; justify-content: center; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .more-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .c-form-row { flex-direction: column; }
+            .nav-menu { display: none; }
+            .nav-menu.open { display: flex; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; background: rgba(5,5,5,0.96); padding: 20px 28px; gap: 14px; border-bottom: 1px solid var(--border); }
+            .nav-toggle { display: block; }
+            .section-title { font-size: 26px; }
+            .footer .wrap { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ORB BACKGROUND -->
+    <div class="orbs">
+        <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+        <div class="orb o4"></div><div class="orb o5"></div><div class="orb o6"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav-top">
+        <div class="wrap">
+            <div class="nav-brand">yasir<em>.</em>khan</div>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('open')">&#9776;</button>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#published-apps">Play Store</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="Yasir_Khan_Android_Resume.pdf" class="nav-resume" download>&darr; Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="wrap">
+            <div class="hero-content">
+                <div class="hero-status"><span class="hero-dot"></span> Open to Senior Android Developer Roles</div>
+                <h1>I build <span class="accent">Android<br>systems</span> that ship.</h1>
+                <div class="hero-subtitle">Senior Android Developer &mdash; Kotlin &middot; Jetpack Compose &middot; Clean Architecture</div>
+                <div class="hero-niche">Kotlin &middot; Jetpack Compose &middot; Hilt &middot; Room &middot; Coroutines/Flow &middot; SensorManager &middot; CameraX</div>
+                <p class="hero-text">
+                    5+ years engineering production-grade Android applications with Kotlin, Jetpack Compose, Hilt, and Room SQLite. Expert in Modern Clean Architecture, strict SOLID principles, sensor calibration &amp; telemetry, FFmpeg media processing, CameraX with ML Kit, and Google Play Store deployment. 5 apps live on Play Store.
+                </p>
+                <div class="hero-cta">
+                    <a href="mailto:ykhkpk@gmail.com" class="btn btn-fill">Get in Touch &rarr;</a>
+                    <a href="#projects" class="btn btn-ghost">View Case Studies</a>
+                    <a href="Yasir_Khan_Android_Resume.pdf" class="btn btn-ghost" download>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                        Download Resume
+                    </a>
+                </div>
+                <div class="hero-metrics">
+                    <div><div class="metric-num">5+</div><div class="metric-label">Years Experience</div></div>
+                    <div><div class="metric-num">8+</div><div class="metric-label">Android Apps Delivered</div></div>
+                    <div><div class="metric-num">3</div><div class="metric-label">Companies</div></div>
+                    <div><div class="metric-num">5</div><div class="metric-label">Apps on Google Play</div></div>
+                </div>
+            </div>
+            <div class="hero-photo-col">
+                <div class="hero-photo-frame">
+                    <img src="profile_clean_bg_1784273378341.png" alt="Yasir Khan - Senior Mobile Systems Engineer" class="hero-photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY HIRE ME -->
+    <section class="section" id="value">
+        <div class="wrap">
+            <span class="section-label">Why Work With Me</span>
+            <h2 class="section-title">What I Bring to Your Team</h2>
+            <p class="section-desc">Not just a coder &mdash; an engineer who understands the full Android lifecycle from architecture to Google Play Store deployment.</p>
+
+            <div class="value-grid">
+                <div class="value-card reveal">
+                    <div class="value-icon">&#127959;</div>
+                    <div class="value-title">Production-Proven (14+ Apps)</div>
+                    <p class="value-text">8+ Android applications shipped across 3 companies, with 5 apps live on Google Play. Handled everything from Play Store submissions to CI/CD pipelines, crash-free telemetry, and production scaling.</p>
+                    <div class="value-tags">
+                        <span class="value-tag">Google Play</span>
+                        <span class="value-tag">CI/CD</span>
+                        <span class="value-tag">Firebase App Distribution</span>
+                    </div>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#9881;</div>
+                    <div class="value-title">Deep System-Level Engineering</div>
+                    <p class="value-text">Raw SensorManager telemetry for compass calibration and gyroscope alignment, FFmpeg single-pass filter graphs for video processing, CameraX + ML Kit barcode detection, and 60fps Compose Canvas engines.</p>
+                    <div class="value-tags">
+                        <span class="value-tag">SensorManager</span>
+                        <span class="value-tag">FFmpeg</span>
+                        <span class="value-tag">CameraX</span>
+                        <span class="value-tag">ML Kit</span>
+                    </div>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#128737;</div>
+                    <div class="value-title">Modern Clean Architecture &amp; SOLID</div>
+                    <p class="value-text">Strict separation into Domain, Data, Presentation, and Core layers. Interface Segregation via segregated Kotlin interfaces, Dependency Inversion use cases with Hilt injection, and Coroutines with structured concurrency.</p>
+                    <div class="value-tags">
+                        <span class="value-tag">Clean Arch</span>
+                        <span class="value-tag">SOLID</span>
+                        <span class="value-tag">Coroutines</span>
+                        <span class="value-tag">Hilt DI</span>
+                    </div>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#128260;</div>
+                    <div class="value-title">Offline-First &amp; Reactive Databases</div>
+                    <p class="value-text">High-performance persistence using Room SQLite with reactive Flow observations, DataStore preferences, and background WorkManager tasks for offline-first data synchronization.</p>
+                    <div class="value-tags">
+                        <span class="value-tag">Room SQLite</span>
+                        <span class="value-tag">DataStore</span>
+                        <span class="value-tag">WorkManager</span>
+                        <span class="value-tag">Flow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT BENTO -->
+    <section class="section" id="about">
+        <div class="wrap">
+            <span class="section-label">01 &mdash; Architecture &amp; Skills</span>
+            <h2 class="section-title">How I Build</h2>
+            <p class="section-desc">Strict Clean Architecture with pure domain layers, zero UI coupling, and production-grade dependency injection across every project.</p>
+
+            <div class="bento">
+                <!-- Architecture -->
+                <div class="card c-arch reveal">
+                    <span class="section-label" style="margin-bottom: 6px;">System Design</span>
+                    <div class="arch-stack">
+                        <div class="arch-layer"><h4>Presentation</h4><p>Jetpack Compose &rarr; StateFlow / SharedFlow / LaunchedEffect</p></div>
+                        <div class="arch-arrow">&darr; observes</div>
+                        <div class="arch-layer highlight"><h4 style="color:var(--gold)">Domain (UseCases &amp; Protocols)</h4><p>Business logic, segregated repository protocols (SOLID ISP/DIP), domain entities</p></div>
+                        <div class="arch-arrow">&darr; implements</div>
+                        <div class="arch-layer"><h4>Data &amp; Persistence</h4><p>Room SQLite / DataStore / Retrofit / OkHttp / WorkManager</p></div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="tag">MVVM</span><span class="tag">MVI</span><span class="tag">Hilt</span>
+                        <span class="tag">Retrofit</span><span class="tag">Gradle</span><span class="tag">CI/CD</span>
+                    </div>
+                </div>
+
+                <!-- Terminal -->
+                <div class="card c-term reveal">
+                    <div class="term-bar">
+                        <div class="term-dots"><span class="td td-r"></span><span class="td td-y"></span><span class="td td-g"></span></div>
+                        <span class="term-label">guest@yasir ~ %</span>
+                    </div>
+                    <div class="term-out" id="t-out">
+                        <div>$ whoami</div>
+                        <div style="color:var(--gold)">yasir-khan &mdash; senior android developer</div>
+                        <div>$ cat focus.txt</div>
+                        <div>&rarr; Kotlin &middot; Jetpack Compose &middot; Hilt</div>
+                        <div>&rarr; Room SQLite &middot; Coroutines &middot; Flow</div>
+                        <div>&rarr; Sensor calibration &middot; SensorManager</div>
+                        <div>&rarr; CameraX &middot; ML Kit &middot; FFmpeg</div>
+                        <div>&rarr; WebSocket &middot; FCM &middot; Foreground Services</div>
+                        <div style="color:var(--sage);margin-top:4px">Type 'help' for commands.</div>
+                    </div>
+                    <div class="term-in">
+                        <span class="term-caret">&#10095;</span>
+                        <input type="text" class="term-field" id="t-in" placeholder="Type a command..." autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- Metrics -->
+                <div class="card c-stat reveal">
+                    <div class="ring">
+                        <svg width="64" height="64"><circle cx="32" cy="32" r="28" stroke="var(--border)" stroke-width="2.5" fill="none"/><circle cx="32" cy="32" r="28" stroke="var(--gold)" stroke-width="2.5" fill="none" stroke-dasharray="176" stroke-dashoffset="17" stroke-linecap="round"/></svg>
+                        <span class="ring-val">60fps</span>
+                    </div>
+                    <div><div class="stat-name">Render Target</div><div class="stat-sub">Jetpack Compose UI</div></div>
+                </div>
+                <div class="card c-stat reveal">
+                    <div class="ring">
+                        <svg width="64" height="64"><circle cx="32" cy="32" r="28" stroke="var(--border)" stroke-width="2.5" fill="none"/><circle cx="32" cy="32" r="28" stroke="var(--gold)" stroke-width="2.5" fill="none" stroke-dasharray="176" stroke-dashoffset="0" stroke-linecap="round"/></svg>
+                        <span class="ring-val">100%</span>
+                    </div>
+                    <div><div class="stat-name">DI Coverage</div><div class="stat-sub">Hilt DI decoupled</div></div>
+                </div>
+                <div class="card c-stat reveal">
+                    <div class="ring">
+                        <svg width="64" height="64"><circle cx="32" cy="32" r="28" stroke="var(--border)" stroke-width="2.5" fill="none"/><circle cx="32" cy="32" r="28" stroke="var(--sage)" stroke-width="2.5" fill="none" stroke-dasharray="176" stroke-dashoffset="52" stroke-linecap="round"/></svg>
+                        <span class="ring-val">70%</span>
+                    </div>
+                    <div><div class="stat-name">Battery Saved</div><div class="stat-sub">Location poll gates</div></div>
+                </div>
+
+                <!-- Specs -->
+                <div class="card c-specs reveal">
+                    <div class="specs-nav">
+                        <button class="spec-btn on" onclick="showSpec(event,'compass')">Sensor Calibration</button>
+                        <button class="spec-btn" onclick="showSpec(event,'polar')">Extreme Latitudes</button>
+                        <button class="spec-btn" onclick="showSpec(event,'ffmpeg')">FFmpeg Pipeline</button>
+                    </div>
+                    <div class="spec-body" id="spec-out">
+                        <div class="sp-title">&#129517; Compass Calibration &amp; Gyroscope Alignment</div>
+                        <ul class="sp-list">
+                            <li><strong>Coordinate Remapping:</strong> SensorManager.remapCoordinateSystem realigns rotation matrix for device orientation (portrait/landscape/tabletop).</li>
+                            <li><strong>Azimuth Calculation:</strong> Raw sensor data evaluated against magnetic declination for true-north heading output.</li>
+                            <li><strong>60FPS Gate:</strong> Sensor callbacks throttled to screen refresh rate, preventing UI thread lock.</li>
+                        </ul>
+                        <div class="tag-row" style="border: none; padding: 0; margin-top: 10px;">
+                            <span class="tag">TYPE_ROTATION_VECTOR</span><span class="tag">Low-Pass Filter</span><span class="tag">Azimuth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="card c-skills reveal">
+                    <span class="section-label" style="margin-bottom: 4px;">Tech Stack</span>
+                    <div class="skills-cols">
+
+                        <div>
+                            <div class="sk-group-name" style="color: #38bdf8;">Android Native (Kotlin)</div>
+                            <div class="sk-tags">
+                                <span class="sk-tag" style="border-color: rgba(var(--gold-rgb), 0.3); color: var(--gold);">Kotlin</span>
+                                <span class="sk-tag" style="border-color: rgba(var(--gold-rgb), 0.3); color: var(--gold);">Jetpack Compose</span>
+                                <span class="sk-tag" style="border-color: rgba(var(--gold-rgb), 0.3); color: var(--gold);">Hilt</span>
+                                <span class="sk-tag">Room SQLite</span>
+                                <span class="sk-tag">Coroutines / Flow</span>
+                                <span class="sk-tag">SensorManager</span>
+                                <span class="sk-tag">CameraX</span>
+                                <span class="sk-tag">ML Kit</span>
+                                <span class="sk-tag">WorkManager</span>
+                                <span class="sk-tag">DataStore</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="sk-group-name">Media &amp; System APIs</div>
+                            <div class="sk-tags">
+                                <span class="sk-tag">FFmpeg</span>
+                                <span class="sk-tag">InputMethodService</span>
+                                <span class="sk-tag">SAF / MediaStore</span>
+                                <span class="sk-tag">FCM</span>
+                                <span class="sk-tag">Foreground Service</span>
+                                <span class="sk-tag">WebSocket</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="sk-group-name">Architecture &amp; Principles</div>
+                            <div class="sk-tags">
+                                <span class="sk-tag" style="border-color: rgba(var(--gold-rgb), 0.3); color: var(--gold);">Modern Clean Architecture</span>
+                                <span class="sk-tag" style="border-color: rgba(var(--gold-rgb), 0.3); color: var(--gold);">Strict SOLID Principles</span>
+                                <span class="sk-tag">Repository Pattern</span>
+                                <span class="sk-tag">ISP &amp; DIP</span>
+                                <span class="sk-tag">Coroutines / Structured Concurrency</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="sk-group-name">Real-Time &amp; Networking</div>
+                            <div class="sk-tags">
+                                <span class="sk-tag">WebSockets</span><span class="sk-tag">WebRTC</span>
+                                <span class="sk-tag">FCM Push</span><span class="sk-tag">Retrofit</span>
+                                <span class="sk-tag">OkHttp</span><span class="sk-tag">Foreground Service</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS FEATURED -->
+    <section class="section" id="projects">
+        <div class="wrap">
+            <span class="section-label">02 &mdash; Case Studies</span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-desc">Each project follows a Goal &rarr; Challenge &rarr; Solution &rarr; Impact framework. Built using Modern Clean Architecture and SOLID design principles with Kotlin and Jetpack Compose.</p>
+
+                        <div class="projects-grid">
+                <!-- 2 Quran Kareem (Android Native) -->
+                <div class="proj-card featured reveal">
+                    <div class="proj-platform">
+                        <span>Android Native &middot; Room SQLite &middot; Clean Architecture</span>
+                    </div>
+                    <h3 class="proj-name">Quran Kareem</h3>
+                    <p class="proj-desc">High-performance offline-first Islamic companion for Android featuring 14-line Mushaf reader, real-time sensor-fused Qibla compass, prayer timetables, and audio recitation.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">Executing concurrent queries across 6,236 Ayahs and translations without UI stutter or data races, plus polar latitude calculation singularities.</div>
+                    </div>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution &amp; Impact</div>
+                        <div class="proj-impact-text">Implemented Clean Architecture &amp; SOLID with Room SQLite, Kotlin Coroutines with Flow-based reactive observations, Hilt dependency injection, and SensorManager for real-time compass calibration.</div>
+                    </div>
+                    <div class="proj-stack">
+                        <span class="proj-chip">Kotlin</span>
+                        <span class="proj-chip">Jetpack Compose</span>
+                        <span class="proj-chip">Room SQLite</span>
+                        <span class="proj-chip">Hilt</span>
+                        <span class="proj-chip">SensorManager</span>
+                        <span class="proj-chip">Clean Arch</span>
+                        <span class="proj-chip">SOLID</span>
+                    </div>
+
+                </div>
+
+                <!-- 7 Scoop Messenger -->
+                <div class="proj-card featured reveal">
+                    <div class="proj-platform">Android &middot; Real-time Communications</div>
+                    <h3 class="proj-name">Scoop Messenger</h3>
+                    <p class="proj-desc">WebSocket-powered messaging client with text, video/audio calls, typing indicators, read receipts, and FCM push notifications.</p>
+                    <div class="proj-case">
+                        <div class="proj-case-label">Challenge</div>
+                        <div class="proj-case-text">WebSocket connections dropped silently when switching between activities.</div>
+                    </div>
+                    <div class="proj-impact">
+                        <div class="proj-impact-label">Solution &amp; Impact</div>
+                        <div class="proj-impact-text">Persistent foreground service with exponential backoff reconnection. 99.5% uptime during active sessions.</div>
+                    </div>
+                    <div class="proj-stack"><span class="proj-chip">WebSocket</span><span class="proj-chip">Video/Audio</span><span class="proj-chip">FCM</span><span class="proj-chip">Service</span></div>
+                </div>
+
+<!-- More Projects Collapsible -->
+            <div class="more-projects">
+                <button class="more-toggle" id="more-toggle" onclick="toggleMore()">
+                    <span>Show 4 More Android Projects</span>
+                    <span class="arrow">&#9660;</span>
+                </button>
+                <div class="more-grid" id="more-grid">
+                        <div class="mini-name">QRScanPro</div>
+                        <div class="mini-desc">High-speed native Android QR &amp; barcode scanner utilizing CameraX capture session and ML Kit barcode scanning with instant haptic response, batch scanning, and Room persistence.</div>
+                        <div class="mini-stack">
+                            <span class="mini-chip">Kotlin</span>
+                            <span class="mini-chip">Compose</span>
+                            <span class="mini-chip">CameraX</span>
+                            <span class="mini-chip">Vision</span>
+                            <span class="mini-chip">Room DB</span>
+                        </div>
+                        <div class="mini-actions" style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border);">
+                            <a href="https://github.com/ykhkpk/QRScanPro" target="_blank" rel="noopener noreferrer" class="github-btn" style="padding: 5px 12px; font-size: 10.5px;">
+                                <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                View on GitHub &rarr;
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mini-card reveal">
+                        <div class="mini-platform">Android &middot; Media Processing</div>
+                        <div class="mini-name">Video Editor Extensions</div>
+                        <div class="mini-desc">Single-pass FFmpeg filter graphs for reverse playback, MP4 to MP3 extraction, and dynamic watermark overlay with 40% export speedup.</div>
+                        <div class="mini-stack"><span class="mini-chip">FFmpeg</span><span class="mini-chip">Filter Graphs</span><span class="mini-chip">Threads</span></div>
+                    </div>
+                    <div class="mini-card reveal">
+                        <div class="mini-platform">Android &middot; Input Method</div>
+                        <div class="mini-name">Custom IME Keyboard</div>
+                        <div class="mini-desc">System keyboard on InputMethodService with gesture typing and sub-50ms key response via canvas-cached glyph rendering.</div>
+                        <div class="mini-stack"><span class="mini-chip">IME</span><span class="mini-chip">Canvas Cache</span><span class="mini-chip">Gestures</span></div>
+                    </div>
+                        <div class="mini-desc">Typography card creator with custom backgrounds, fonts, and direct social sharing via native intents.</div>
+                        <div class="mini-stack"><span class="mini-chip">Canvas</span><span class="mini-chip">Share Intent</span><span class="mini-chip">Typography</span></div>
+                    </div>
+
+                        <div class="mini-desc">Template-driven prompt builder with variable substitution and one-tap export to clipboard or AI chat apps.</div>
+                        <div class="mini-stack"><span class="mini-chip">Templates</span><span class="mini-chip">Clipboard</span><span class="mini-chip">Categories</span></div>
+                    </div>
+                    <div class="mini-card reveal">
+                        <div class="mini-platform">Android &middot; Camera &amp; ML</div>
+                        <div class="mini-name">QR Code Scanner</div>
+                        <div class="mini-desc">Fast barcode/QR scanner using CameraX + ML Kit with batch scanning, timestamped history, and URL detection.</div>
+                        <div class="mini-stack"><span class="mini-chip">CameraX</span><span class="mini-chip">ML Kit</span><span class="mini-chip">Frame Skip</span></div>
+                    </div>
+                    <div class="mini-card reveal">
+                        <div class="mini-platform">Android &middot; Published</div>
+                        <div class="mini-name">WhatsApp Status Saver</div>
+                        <div class="mini-desc">Published utility for WhatsApp status media with gallery grid and SAF compatibility across Android 8&ndash;14.</div>
+                        <div class="mini-stack"><span class="mini-chip">SAF</span><span class="mini-chip">MediaStore</span><span class="mini-chip">Play Store</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PUBLISHED APPS — GOOGLE PLAY -->
+    <section class="section" id="published-apps">
+        <div class="wrap">
+            <span class="section-label">03 &mdash; Published Apps</span>
+            <h2 class="section-title">Live on Google Play</h2>
+            <div class="apps-section-badge"><span class="badge-dot"></span> 3 Apps Published &amp; Available for Download</div>
+            <p class="section-desc">These apps are live on the Google Play Store, built and shipped by me. Each one solves a real problem for real users.</p>
+
+            <div class="apps-showcase">
+                <!-- Prompi Android -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="prompi.jpg" alt="Prompi AI Prompt Generator App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Android Native &middot; AI / LLM</div>
+                        <h3 class="app-card-name">Prompi &mdash; AI Prompt Generator</h3>
+                        <p class="app-card-desc">AI-powered prompt generator with real-time LLM chat, streaming responses via OkHttp SSE, voice-to-prompt via live microphone audio streaming, and categorized prompt templates for any use case.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">Kotlin</span>
+                            <span class="app-card-chip">Jetpack Compose</span>
+                            <span class="app-card-chip">LLM SSE</span>
+                            <span class="app-card-chip">Speech-to-Text</span>
+                            <span class="app-card-chip">Coroutines Flow</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=com.generate.prompt.ai" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt Generator Android -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="prompt_generator.jpg" alt="AI Prompt Generator App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Android Native &middot; Productivity</div>
+                        <h3 class="app-card-name">AI Prompt Generator</h3>
+                        <p class="app-card-desc">Template-driven prompt builder with categorized templates for Writing, Coding, Marketing, and Art. Variable substitution, search, Room database, and one-tap export to clipboard or AI chat apps.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">Kotlin</span>
+                            <span class="app-card-chip">Compose</span>
+                            <span class="app-card-chip">Room DB</span>
+                            <span class="app-card-chip">Templates</span>
+                            <span class="app-card-chip">Clipboard</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=com.prompt.generator.ai" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Status Saver -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="whatsapp_status.jpg" alt="WhatsApp Status Saver App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Android &middot; Published on Play Store</div>
+                        <h3 class="app-card-name">WhatsApp Status Saver</h3>
+                        <p class="app-card-desc">Save and download WhatsApp statuses &mdash; images, videos, and quotes. Gallery grid view with SAF compatibility across Android 8&ndash;14. Batch save with one tap.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">Kotlin</span>
+                            <span class="app-card-chip">SAF</span>
+                            <span class="app-card-chip">MediaStore</span>
+                            <span class="app-card-chip">Gallery</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=com.stickers.qoutes.save.go" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="calculator.jpg" alt="Scientific Calculator App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Android &middot; Utility</div>
+                        <h3 class="app-card-name">Scientific Calculator</h3>
+                        <p class="app-card-desc">Full-featured scientific calculator with sin, cos, tan, log, ln, square root, power functions, and unit conversions. Clean dark UI with expression history and RAD/DEG modes.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">Kotlin</span>
+                            <span class="app-card-chip">Compose</span>
+                            <span class="app-card-chip">Math Engine</span>
+                            <span class="app-card-chip">Expression Parser</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=scientificcalculator.calculatorapp.simplecalculator.calculator" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR & Barcode Scanner -->
+                <div class="app-card reveal">
+                    <div class="app-card-img-wrap">
+                        <img src="qr_barcode.jpg" alt="QR and Barcode Scanner App" class="app-card-img" loading="lazy">
+                    </div>
+                    <div class="app-card-body">
+                        <div class="app-card-platform"><span class="live-dot"></span> Android &middot; Camera &amp; ML</div>
+                        <h3 class="app-card-name">QR &amp; Barcode Scanner</h3>
+                        <p class="app-card-desc">Fast QR code and barcode scanner using CameraX + ML Kit. Features batch scanning, timestamped history, URL detection, WiFi auto-connect, and vCard import from scanned contacts.</p>
+                        <div class="app-card-stack">
+                            <span class="app-card-chip">CameraX</span>
+                            <span class="app-card-chip">ML Kit</span>
+                            <span class="app-card-chip">Barcode</span>
+                            <span class="app-card-chip">Frame Skip</span>
+                        </div>
+                        <div class="app-card-actions">
+                            <a href="https://play.google.com/store/apps/details?id=com.qrscanner.scan.qrcode.barcode" target="_blank" class="play-store-btn">
+                                <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.2 12.89l2.498-3.382zM5.864 2.658L16.8 9.99l-2.302 2.302-8.635-8.635z"/></svg>
+                                Google Play
+                            </a>
+                            <span class="app-card-rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> Play Store</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+        <div class="wrap">
+            <span class="section-label">04 &mdash; Career Timeline</span>
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-desc">Progressive growth from junior developer to leading architecture decisions across production mobile teams.</p>
+
+            <div class="timeline-grid">
+                <div class="time-card reveal">
+                    <span class="time-badge current">&#9679; CURRENT</span>
+                    <div class="time-date">May 2022 &mdash; Present</div>
+                    <div class="time-role">Senior Android Developer (Lead Android Architect)</div>
+                    <div class="time-co">Ainsoftech &mdash; Lahore, Pakistan</div>
+                    <ul class="time-highlights">
+                        <li><strong>Led Android architecture</strong> across all Android projects using <strong>Modern Clean Architecture</strong> and strict <strong>SOLID principles</strong> with Hilt dependency injection</li>
+                        <li>Built <strong>Quran Kareem</strong> Android with <strong>Room SQLite</strong>, <strong>SensorManager</strong> compass calibration, Jetpack Compose UI, and Hilt DI</li>
+                        <li>Engineered <strong>Scoop Messenger</strong> with WebSocket real-time messaging, video/audio calls via WebRTC, and persistent foreground service with exponential backoff</li>
+                        <li>Built <strong>Video Editor Extensions</strong> with single-pass FFmpeg filter graphs for reverse playback, MP4→MP3 extraction, and dynamic watermark overlay</li>
+                        <li>Published <strong>5 apps on Google Play Store</strong> including WhatsApp Status Saver, QR Scanner, and Scientific Calculator with 99%+ crash-free rates</li>
+                        <li>Built <strong>Custom IME Keyboard</strong> with InputMethodService, gesture typing, and sub-50ms key response via canvas-cached glyph rendering</li>
+                        <li>Engineered <strong>Prompi AI Prompt Studio</strong> and <strong>AI Prompt Generator</strong> on Android with real-time LLM token streaming via OkHttp SSE, live microphone audio streaming speech-to-text, categorized prompt template engines, and Room persistence</li>
+                        <li>Mentored junior engineers, established SOLID coding standards, and managed sprint roadmaps with cross-functional teams</li>
+                    </ul>
+                    <div class="time-tech">
+                        <span class="time-chip">Kotlin</span><span class="time-chip">Jetpack Compose</span><span class="time-chip">Hilt</span>
+                        <span class="time-chip">Room</span><span class="time-chip">Coroutines</span><span class="time-chip">FFmpeg</span>
+                        <span class="time-chip">Clean Arch</span><span class="time-chip">SOLID</span>
+                    </div>
+                </div>
+                <div class="time-card reveal">
+                    <span class="time-badge past">COMPLETED</span>
+                    <div class="time-date">Jan 2022 &mdash; May 2022</div>
+                    <div class="time-role">Android Developer</div>
+                    <div class="time-co">CodingStorms Technology</div>
+                    <ul class="time-highlights">
+                        <li>Delivered <strong>Android client products</strong> using Kotlin and XML layouts</li>
+                        <li>Implemented <strong>pixel-perfect UI</strong> from Figma designs with responsive layouts</li>
+                        <li>Integrated <strong>REST APIs</strong> with proper error handling and caching strategies</li>
+                    </ul>
+                    <div class="time-tech">
+                        <span class="time-chip">Kotlin</span><span class="time-chip">XML</span><span class="time-chip">REST</span>
+                        <span class="time-chip">Figma</span>
+                    </div>
+                </div>
+                <div class="time-card reveal">
+                    <span class="time-badge past">COMPLETED</span>
+                    <div class="time-date">2020 &mdash; 2021</div>
+                    <div class="time-role">Junior Android Developer</div>
+                    <div class="time-co">Solution of Technologies &mdash; Islamabad</div>
+                    <ul class="time-highlights">
+                        <li>Built <strong>foundational Android apps</strong> with XML layouts and ViewBinding</li>
+                        <li>Integrated <strong>Firestore databases</strong> and implemented auth flows with Firebase Auth</li>
+                        <li>Learned <strong>production deployment</strong> workflows and version management</li>
+                    </ul>
+                    <div class="time-tech">
+                        <span class="time-chip">Java</span><span class="time-chip">XML</span><span class="time-chip">Firebase</span>
+                        <span class="time-chip">Firestore</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+        <div class="wrap">
+            <span class="section-label">05 &mdash; Let's Connect</span>
+            <h2 class="section-title">Ready to Hire?</h2>
+            <p class="section-desc">Open to remote roles, freelance projects, and technical collaborations. I respond within 24 hours.</p>
+
+            <div class="contact-layout">
+                <div>
+                    <div class="contact-grid">
+                        <a href="mailto:ykhkpk@gmail.com" class="contact-card">
+                            <div class="contact-icon">&#9993;</div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-val">ykhkpk@gmail.com</div>
+                        </a>
+                        <a href="https://pk.linkedin.com/in/yasir-khan-986152193" target="_blank" class="contact-card">
+                            <div class="contact-icon">&#128279;</div>
+                            <div class="contact-label">LinkedIn</div>
+                            <div class="contact-val">Yasir Khan</div>
+                        </a>
+                        <a href="Yasir_Khan_Android_Resume.pdf" class="contact-card" download>
+                            <div class="contact-icon">&#128196;</div>
+                            <div class="contact-label">Resume</div>
+                            <div class="contact-val">Download PDF</div>
+                        </a>
+                        <a href="tel:+923150012413" class="contact-card">
+                            <div class="contact-icon">&#128241;</div>
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-val">+92 315 0012413</div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <form class="c-form" id="c-form">
+                        <div class="c-form-row">
+                            <input type="text" class="c-field" placeholder="Your Name" id="fn" required>
+                            <input type="email" class="c-field" placeholder="Your Email" id="fe" required>
+                        </div>
+                        <input type="text" class="c-field" placeholder="Subject" id="fs" required>
+                        <textarea class="c-field" style="height:90px;resize:none;" placeholder="Your message..." id="fm" required></textarea>
+                        <button type="submit" class="c-submit">Send via Gmail &rarr;</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-copy">&copy; 2026 Yasir Khan. Designed &amp; engineered with precision.</div>
+            <div class="footer-links">
+                <a href="Yasir_Khan_Android_Resume.pdf" class="footer-link" download>
+                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    Resume
+                </a>
+                <a href="https://pk.linkedin.com/in/yasir-khan-986152193" target="_blank" class="footer-link">
+                    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:ykhkpk@gmail.com" class="footer-link">
+                    &#9993; Email
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        /* Terminal */
+        const tIn = document.getElementById('t-in');
+        const tOut = document.getElementById('t-out');
+                const cmds = {
+            help: 'Commands:<br>• <span style="color:var(--gold)">skills</span> — Android competencies<br>• <span style="color:var(--gold)">repos</span> — Native Android GitHub repos<br>• <span style="color:var(--gold)">projects</span> — Featured Android applications<br>• <span style="color:var(--gold)">contact</span> — Reach me<br>• <span style="color:var(--gold)">experience</span> — Work history<br>• <span style="color:var(--gold)">resume</span> — Download Android resume<br>• <span style="color:var(--gold)">clear</span> — Clear console',
+            skills: 'Android Stack:<br>→ Kotlin · Java · Jetpack Compose · Material Design 3 · Hilt<br>→ Persistence: Room SQLite Database · Multi-Threaded DAOs · DataStore<br>→ Concurrency: Kotlin Coroutines · Flow · StateFlow · SharedFlow<br>→ Media & Hardware: Android MediaCodec · FFmpeg · CameraX · SensorManager<br>→ Real-Time: WebSockets · WebRTC · Foreground Services · WorkManager<br>→ Architecture: Modern Clean Architecture · Strict SOLID Principles · MVVM/MVI',
+            repos: 'Native Android Repositories:<br>→ Quran Kareem: <a href="https://github.com/ykhkpk/QuranKareem" target="_blank" style="color:var(--gold)">github.com/ykhkpk/QuranKareem</a><br>→ Scoop Messenger: <a href="https://github.com/ykhkpk/ScoopMessenger" target="_blank" style="color:var(--gold)">github.com/ykhkpk/ScoopMessenger</a><br>→ Video Editor: <a href="https://github.com/ykhkpk" target="_blank" style="color:var(--gold)">github.com/ykhkpk</a>',
+            projects: 'Featured Android Projects:<br>→ Prompi & AI Prompt Generator (Android Native · Kotlin · LLM SSE · Speech-to-Text · Room)<br>→ Quran Kareem (Android · Kotlin · Jetpack Compose · Room · SensorManager)<br>→ Scoop Messenger (Android · WebSockets · WebRTC · Foreground Services)<br>→ Video Editor & FFmpeg Extensions (MediaCodec · Canvas 2D · NDK)<br>→ Custom IME Keyboard (InputMethodService · Room · Dynamic Themes)<br>→ GPS Speedometer (FusedLocationProvider · Foreground Service)',
+            contact: '→ Email: <a href="mailto:ykhkpk@gmail.com" style="color:var(--gold)">ykhkpk@gmail.com</a><br>→ Phone: +92 315 0012413<br>→ LinkedIn: <a href="https://pk.linkedin.com/in/yasir-khan-986152193" target="_blank" style="color:var(--gold)">linkedin.com/in/yasir-khan</a>',
+            experience: '→ 2022–Present: Ainsoftech (Lead Android Architect) — 10+ Android apps shipped<br>→ Jan–May 2022: CodingStorms (Android Developer) — Production Android apps<br>→ 2020–2021: Solution of Technologies (Junior Android Dev) — Core Android',
+            resume: '<span style="color:var(--gold)">Downloading Android resume...</span><br>→ If download doesn't start, <a href="Yasir_Khan_Android_Resume.pdf" style="color:var(--gold)" download>click here</a>.'
+        };
+        tIn.addEventListener('keydown', function(e) {
+            if (e.key !== 'Enter') return;
+            var v = tIn.value.trim().toLowerCase();
+            var row = document.createElement('div');
+            row.innerHTML = '<span style="color:var(--gold)">\u276F</span> ' + v;
+            tOut.appendChild(row);
+            if (v === 'clear') tOut.innerHTML = '';
+            else if (cmds[v]) { var r = document.createElement('div'); r.style.color='var(--gray)'; r.innerHTML=cmds[v]; tOut.appendChild(r); }
+            else if (v) { var r = document.createElement('div'); r.style.color='#ef4444'; r.textContent='Not found: "' + v + '". Type "help".'; tOut.appendChild(r); }
+            tIn.value = '';
+            tOut.scrollTop = tOut.scrollHeight;
+        });
+
+        /* Specs Tabs */
+        var specData = {
+            compass: '<div class="sp-title">\uD83E\uDDED Compass Calibration & Gyroscope Alignment</div><ul class="sp-list"><li><strong>Coordinate Remapping:</strong> remapCoordinateSystem realigns rotation matrix per device orientation.</li><li><strong>Azimuth:</strong> Raw sensor data + magnetic declination \u2192 true-north heading.</li><li><strong>60FPS Gate:</strong> Callbacks throttled to screen refresh rate.</li></ul><div class="tag-row" style="border:none;padding:0;margin-top:10px"><span class="tag">ROTATION_VECTOR</span><span class="tag">Low-Pass</span><span class="tag">Azimuth</span></div>',
+            polar: '<div class="sp-title">\u2744\uFE0F Extreme Latitude Constraints</div><ul class="sp-list"><li><strong>Polar Compensation:</strong> Prayer engines fail at latitudes where twilight doesn\'t occur. Clamped to \u00b165\u00b0.</li><li><strong>Night Rule:</strong> HighLatitudeRule.MIDDLE_OF_THE_NIGHT fallback prevents null timetables.</li><li><strong>Season Aware:</strong> Dynamic adjustment for midnight sun and polar night periods.</li></ul><div class="tag-row" style="border:none;padding:0;margin-top:10px"><span class="tag">Lat Clamping</span><span class="tag">HighLatitudeRule</span><span class="tag">Polar Fix</span></div>',
+            ffmpeg: '<div class="sp-title">\uD83C\uDFAC FFmpeg Processing Pipeline</div><ul class="sp-list"><li><strong>Thread Isolation:</strong> Media transforms offloaded to dedicated worker threads.</li><li><strong>Single-Pass Graphs:</strong> reverse + overlay combined into one FFmpeg command. No intermediate files.</li><li><strong>Overlay Compositing:</strong> Watermark layers compiled inside render passes at target resolution.</li></ul><div class="tag-row" style="border:none;padding:0;margin-top:10px"><span class="tag">FFmpeg</span><span class="tag">Filter Graph</span><span class="tag">Overlay</span></div>'
+        };
+        function showSpec(e, k) {
+            document.querySelectorAll('.spec-btn').forEach(function(b) { b.classList.remove('on'); });
+            e.target.classList.add('on');
+            document.getElementById('spec-out').innerHTML = specData[k];
+        }
+
+        /* More Projects Toggle */
+        function toggleMore() {
+            var btn = document.getElementById('more-toggle');
+            var grid = document.getElementById('more-grid');
+            btn.classList.toggle('open');
+            grid.classList.toggle('open');
+            var label = btn.querySelector('span:first-child');
+            if (grid.classList.contains('open')) {
+                label.textContent = 'Show Less';
+                grid.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+            } else {
+                label.textContent = 'Show 4 More Android Projects';
+            }
+        }
+
+        /* Resume — direct download via HTML download attribute, no JS needed */
+
+
+        /* Contact Gmail */
+        document.getElementById('c-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var n=document.getElementById('fn').value, em=document.getElementById('fe').value,
+                s=document.getElementById('fs').value, m=document.getElementById('fm').value;
+            window.location.href = 'mailto:ykhkpk@gmail.com?subject=' + encodeURIComponent(s) + '&body=' + encodeURIComponent('Hi Yasir,\n\nI\'m ' + n + ' (' + em + ').\n\n' + m);
+        });
+
+        /* Scroll Reveal */
+        var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(function(el) { 
+            io.observe(el);
+            // Safety: guarantee visibility after paint
+            setTimeout(function() { el.classList.add('visible'); }, 300);
+        });
+    </script>
+</body>
+</html>
